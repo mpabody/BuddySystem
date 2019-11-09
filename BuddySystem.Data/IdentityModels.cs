@@ -32,7 +32,8 @@ namespace BuddySystem.Data
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Walker> Walkers { get; set; }
+        public DbSet<Buddy> Buddys { get; set; }
+        public DbSet<Trip> Trips { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

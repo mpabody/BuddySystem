@@ -55,10 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trip\TripCreate.cs" />
+    <Compile Include="Trip\TripDetail.cs" />
+    <Compile Include="Trip\TripEdit.cs" />
+    <Compile Include="Trip\TripListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuddySystem.Data\BuddySystem.Data.csproj">
+      <Project>{EDAF077B-FCA1-4768-A67C-48257DF01797}</Project>
+      <Name>BuddySystem.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

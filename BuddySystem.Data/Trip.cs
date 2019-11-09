@@ -17,11 +17,13 @@ namespace BuddySystem.Data
         public string StartLocation { get; set; }
 
         public string EndLocation { get; set; }
+        public string Description { get; set; }
         [Required]
-        [ForeignKey("Buddy")]
-        public string PrimaryBuddyId { get; set; }
+        [ForeignKey("PrimaryBuddy")]
+        public int BuddyId { get; set; }
         public virtual Buddy PrimaryBuddy { get; set; }
         public int VolunteerId { get; set; }
         public virtual Buddy Volunteer { get; set; }
+        
     }
 }
