@@ -9,6 +9,7 @@ namespace BuddySystem.Data
 {
     public class Buddy
     {
+        [Required]
         public Guid UserID { get; set; }
 
         [Key]
