@@ -33,7 +33,7 @@ namespace BuddySystem.Data
         }
 
         public DbSet<Buddy> Buddies { get; set; }
-
+        public DbSet<Trip> Trips { get; set; }
         //public DbSet<Walker> Walkers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
