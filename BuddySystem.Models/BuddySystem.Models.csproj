@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuddyModels\BuddyCreate.cs" />
+    <Compile Include="BuddyModels\BuddyDetail.cs" />
+    <Compile Include="BuddyModels\BuddyEdit.cs" />
+    <Compile Include="BuddyModels\BuddyListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
