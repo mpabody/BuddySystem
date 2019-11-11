@@ -29,5 +29,15 @@ namespace BuddySystem.Services
                 return query.ToList();
             }
         }
+
+        //public bool CreateTrip(TripCreate model)
+        //{
+        //    var entity = new Trip()
+        //    {
+        //        StartLocation = model.StartLocation,
+                
+        //    }
+
+       // }
     }
 }
