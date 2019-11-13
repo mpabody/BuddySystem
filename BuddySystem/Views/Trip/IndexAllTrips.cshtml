@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BuddySystem.Models.TripListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexAllTrips";
 }
 
-<h2>Index</h2>
+<h2>IndexAllTrips</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -24,7 +24,13 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.PrimaryBuddyId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PrimaryBuddyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VolunteerName)
@@ -47,7 +53,13 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PrimaryBuddyId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.PrimaryBuddyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VolunteerName)

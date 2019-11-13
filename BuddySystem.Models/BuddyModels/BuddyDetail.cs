@@ -14,5 +14,6 @@ namespace BuddySystem.Models
         public bool IsVolunteer { get; set; }
         public bool IsMale { get; set; }
         public int Age { get; set; }
+        public List<TripListItem> ListOfTrips { get; set; }
     }
 }

@@ -10,15 +10,24 @@ namespace BuddySystem.Models
 {
     public class TripCreate
     {
+        public List<BuddyListItem> ListOfAllBuddies { get; set; }
         [Required]
-        public string StartLocation { get; set; }
-        [Required] // might be an address that will convert to a latitude/longitude upon completion
-        public string ProjectedEndLocation { get; set; }
+        public DateTime StartTime { get; set; }
+
         [Required]
         public int PrimaryBuddyId { get; set; }
         public virtual Buddy PrimaryBuddy { get; set; }
         [Required]
         public int VolunteerId { get; set; }
         public virtual Buddy Volunteer { get; set; }
+
+        [Required]
+        public string StartLocation { get; set; }
+        [Required] 
+        public string ProjectedEndLocation { get; set; }
+        [Required]
+        public string EndLocation { get; set; }
+        [Required]
+        public DateTime EndTime { get; set; }
     }
 }

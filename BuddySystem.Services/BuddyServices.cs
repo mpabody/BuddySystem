@@ -18,15 +18,16 @@ namespace BuddySystem.Services
             _userId = userId;
         }
 
+        public BuddyService() { }
+
         // Display all Buddies in a list
-        public IEnumerable<BuddyListItem> GetBuddies()
-        {
+        public List<BuddyListItem> GetAllBuddies()
+        { 
             using (var ctx = new ApplicationDbContext())
             {
                 var buddyQuery =
                     ctx
                         .Buddies
-                        .Where(b => b.UserId == _userId)
                         .Select(
                             b => new BuddyListItem
                             {
@@ -38,7 +39,7 @@ namespace BuddySystem.Services
                                 Age = b.Age
                             });
 
-                return buddyQuery.ToArray();
+                return buddyQuery.ToList();
             }
         }
 
@@ -69,7 +70,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .Buddies
-                        .SingleOrDefault(b => b.BuddyId == id && b.UserId == _userId);
+                        .SingleOrDefault(b => b.BuddyId == id);
 
                 return
                     new BuddyDetail
@@ -79,7 +80,7 @@ namespace BuddySystem.Services
                         CurrentLocation = entity.CurrentLocation,
                         IsVolunteer = entity.IsVolunteer,
                         IsMale = entity.IsMale,
-                        Age = entity.Age
+                        Age = entity.Age                    
                     };
             }
         }
@@ -115,6 +116,44 @@ namespace BuddySystem.Services
                 ctx.Buddies.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        //Code below is a work around
+        public BuddyDetail GetCurrentUserBuddy() //Returns BuddyDetail Where List Of
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Buddies
+                        .SingleOrDefault(b => b.UserId == _userId);
+
+                var trips = ctx.Trips
+                                     .Where(t => t.BuddyId == entity.BuddyId)
+                                      .Select(t => new TripListItem()
+                                      {
+                                          TripId = t.TripId,
+                                          StartLocation = t.StartLocation,
+                                          EndLocation = t.EndLocation,
+                                          Description = t.Description,
+                                          PrimaryBuddyId = t.BuddyId,
+                                          PrimaryBuddyName = t.Buddy.Name,
+                                          VolunteerId = t.VolunteerId,
+                                          VolunteerName = t.Volunteer.Name
+                                      }).ToList();
+                                
+                return new BuddyDetail()
+                {
+                    BuddyId = entity.BuddyId,
+                    Name = entity.Name,
+                    CurrentLocation = entity.CurrentLocation,
+                    IsVolunteer = entity.IsVolunteer,
+                    IsMale = entity.IsMale,
+                    Age = entity.Age,
+                    ListOfTrips = trips
+                };
+                    
             }
         }
     }

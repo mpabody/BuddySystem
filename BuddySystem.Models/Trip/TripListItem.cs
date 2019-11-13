@@ -12,7 +12,9 @@ namespace BuddySystem.Models
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }
         public string Description { get; set; }
+        public int PrimaryBuddyId { get; set; }
         public string PrimaryBuddyName { get; set; }
+        public int VolunteerId { get; set; }
         public string VolunteerName { get; set; }
 
     }
