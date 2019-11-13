@@ -241,6 +241,9 @@
     <Content Include="Views\Buddy\Details.cshtml" />
     <Content Include="Views\Buddy\Edit.cshtml" />
     <Content Include="Views\Buddy\Delete.cshtml" />
+    <Content Include="Views\Trip\IndexForUser.cshtml" />
+    <Content Include="Views\Trip\Create.cshtml" />
+    <Content Include="Views\Trip\IndexAllTrips.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

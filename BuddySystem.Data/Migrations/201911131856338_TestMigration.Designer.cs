@@ -7,13 +7,13 @@ namespace BuddySystem.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AdjustedPropertiesOfBuddyChangedNameForBuddyTable : IMigrationMetadata
+    public sealed partial class TestMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdjustedPropertiesOfBuddyChangedNameForBuddyTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TestMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201911110118010_Adjusted-PropertiesOf-Buddy-ChangedName-For-BuddyTable"; }
+            get { return "201911131856338_TestMigration"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,7 +3,7 @@ namespace BuddySystem.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -12,12 +12,35 @@ namespace BuddySystem.Data.Migrations
                 c => new
                     {
                         BuddyId = c.Int(nullable: false, identity: true),
-                        UserID = c.Guid(nullable: false),
+                        UserId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         CurrentLocation = c.String(nullable: false),
                         IsVolunteer = c.Boolean(nullable: false),
+                        IsMale = c.Boolean(nullable: false),
+                        Age = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BuddyId);
+            
+            CreateTable(
+                "dbo.Trip",
+                c => new
+                    {
+                        TripId = c.Int(nullable: false, identity: true),
+                        StartTime = c.DateTime(nullable: false),
+                        BuddyId = c.Int(nullable: false),
+                        VolunteerId = c.Int(nullable: false),
+                        StartLocation = c.String(nullable: false),
+                        ProjectedEndLocation = c.String(nullable: false),
+                        EndLocation = c.String(nullable: false),
+                        EndTime = c.DateTime(nullable: false),
+                        Description = c.String(),
+                        Buddy_BuddyId = c.Int(),
+                    })
+                .PrimaryKey(t => t.TripId)
+                .ForeignKey("dbo.Buddy", t => t.BuddyId, cascadeDelete: false)
+                .ForeignKey("dbo.Buddy", t => t.VolunteerId, cascadeDelete: false)                
+                .Index(t => t.BuddyId)
+                .Index(t => t.VolunteerId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -42,24 +65,6 @@ namespace BuddySystem.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
-                "dbo.Trip",
-                c => new
-                    {
-                        TripId = c.Int(nullable: false, identity: true),
-                        StartLocation = c.String(nullable: false),
-                        EndLocation = c.String(),
-                        Description = c.String(),
-                        BuddyId = c.Int(nullable: false),
-                        VolunteerId = c.Int(nullable: false),
-                        Volunteer_BuddyId = c.Int(),
-                    })
-                .PrimaryKey(t => t.TripId)
-                .ForeignKey("dbo.Buddy", t => t.BuddyId, cascadeDelete: true)
-                .ForeignKey("dbo.Buddy", t => t.Volunteer_BuddyId)
-                .Index(t => t.BuddyId)
-                .Index(t => t.Volunteer_BuddyId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -114,21 +119,23 @@ namespace BuddySystem.Data.Migrations
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.Trip", "Volunteer_BuddyId", "dbo.Buddy");
-            DropForeignKey("dbo.Trip", "BuddyId", "dbo.Buddy");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Trip", "Buddy_BuddyId", "dbo.Buddy");
+            DropForeignKey("dbo.Trip", "VolunteerId", "dbo.Buddy");
+            DropForeignKey("dbo.Trip", "BuddyId", "dbo.Buddy");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Trip", new[] { "Volunteer_BuddyId" });
-            DropIndex("dbo.Trip", new[] { "BuddyId" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Trip", new[] { "Buddy_BuddyId" });
+            DropIndex("dbo.Trip", new[] { "VolunteerId" });
+            DropIndex("dbo.Trip", new[] { "BuddyId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
-            DropTable("dbo.Trip");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.Trip");
             DropTable("dbo.Buddy");
         }
     }

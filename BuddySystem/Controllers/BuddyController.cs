@@ -17,7 +17,7 @@ namespace BuddySystem.Controllers
         public ActionResult Index()
         {
             var service = CreateBuddyService();
-            var model = service.GetBuddies();
+            var model = service.GetAllBuddies();
 
             return View(model);
         }

@@ -13,17 +13,26 @@ namespace BuddySystem.Data
         [Key]
         public int TripId { get; set; }
         //Start & End Location types will change when we implement external APIs
-        [Required]
-        public string StartLocation { get; set; }
 
-        public string EndLocation { get; set; }
-        public string Description { get; set; }
         [Required]
-        [ForeignKey("PrimaryBuddy")]
+        public DateTime StartTime { get; set; }
+        [Required]
+        [ForeignKey(nameof(Buddy))]
         public int BuddyId { get; set; }
-        public virtual Buddy PrimaryBuddy { get; set; }
+        public virtual Buddy Buddy { get; set; }
+        [Required]
+        [ForeignKey(nameof(Volunteer))]
         public int VolunteerId { get; set; }
         public virtual Buddy Volunteer { get; set; }
+        [Required]
+        public string StartLocation { get; set; }
+        [Required]
+        public string ProjectedEndLocation { get; set; }
+        [Required]
+        public string EndLocation { get; set; }
+        [Required]
+        public DateTime EndTime { get; set; }
+        public string Description { get; set; }
         
     }
 }

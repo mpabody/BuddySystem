@@ -53,6 +53,7 @@
             @Html.DisplayFor(modelItem => item.Age)
         </td>
         <td>
+            @Html.ActionLink("Create Trip", "Create", "Trip", new { id = item.BuddyId }, null)
             @Html.ActionLink("Edit", "Edit", new { id = item.BuddyId }) |
             @Html.ActionLink("Details", "Details", new { id = item.BuddyId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.BuddyId })

@@ -10,34 +10,62 @@ namespace BuddySystem.Services
 {
     public class TripService
     {
-        public TripService() { }
+        private readonly Guid _userId;
+        public TripService(Guid userId)
+        {
+            _userId = userId;
+        }
 
-        public IEnumerable<TripListItem> GetTrips()
+        public IEnumerable<TripListItem> GetAllTrips()
         {
             using (var ctx = new ApplicationDbContext())
-            {
-                
+            {             
                 var query = ctx.Trips.Select(e => new TripListItem
                 {
                     TripId = e.TripId,
                     StartLocation = e.StartLocation,
                     EndLocation = e.EndLocation,
-                    PrimaryBuddyName = e.PrimaryBuddy.Name,
+                    PrimaryBuddyId = e.BuddyId,
+                    PrimaryBuddyName = e.Buddy.Name,
+                    VolunteerId = e.VolunteerId,
                     VolunteerName = e.Volunteer.Name,
                     Description = e.Description
                 });
                 return query.ToList();
             }
         }
+        public IEnumerable<TripListItem> GetTripsForCurrentUser()
+        {
+        // uses workaround method in BuddyService   
+            var buddyService = new BuddyService(_userId);
+            var buddy = buddyService.GetCurrentUserBuddy();
+            return buddy.ListOfTrips;        
+        }
 
-        //public bool CreateTrip(TripCreate model)
+        //public IEnumerable<TripListItem> GetTripsByBuddyId()
         //{
-        //    var entity = new Trip()
-        //    {
-        //        StartLocation = model.StartLocation,
-                
-        //    }
 
-       // }
+        //}
+
+        public bool CreateTrip(TripCreate model)
+        {
+
+            var entity = new Trip()
+            {
+                StartTime = model.StartTime,
+                BuddyId = model.PrimaryBuddyId,                              
+                VolunteerId = model.VolunteerId,               
+                StartLocation = model.StartLocation,
+                ProjectedEndLocation = model.ProjectedEndLocation,
+                EndLocation = model.EndLocation,
+                EndTime = model.EndTime,
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Trips.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
