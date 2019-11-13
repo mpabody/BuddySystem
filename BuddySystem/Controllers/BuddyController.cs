@@ -19,7 +19,7 @@ namespace BuddySystem.Controllers
             var service = CreateBuddyService();
             var model = service.GetBuddies();
 
-            return View();
+            return View(model);
         }
 
         // GET: Buddy/Create
