@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201911131856338_TestMigration.Designer.cs">
       <DependentUpon>201911131856338_TestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911140001505_IsApprovedNameChange.cs" />
+    <Compile Include="Migrations\201911140001505_IsApprovedNameChange.Designer.cs">
+      <DependentUpon>201911140001505_IsApprovedNameChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trip.cs" />
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911131856338_TestMigration.resx">
       <DependentUpon>201911131856338_TestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911140001505_IsApprovedNameChange.resx">
+      <DependentUpon>201911140001505_IsApprovedNameChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

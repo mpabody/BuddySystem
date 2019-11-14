@@ -69,7 +69,7 @@ namespace BuddySystem.Controllers
                     BuddyId = detail.BuddyId,
                     Name = detail.Name,
                     CurrentLocation = detail.CurrentLocation,
-                    IsVolunteer = detail.IsVolunteer,
+                    IsApproved = detail.IsApproved,
                     IsMale = detail.IsMale,
                     Age = detail.Age
                 };

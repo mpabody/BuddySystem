@@ -11,7 +11,7 @@ namespace BuddySystem.Models
         public int BuddyId { get; set; }
         public string Name { get; set; }
         public string CurrentLocation { get; set; }
-        public bool IsVolunteer { get; set; }
+        public bool IsApproved { get; set; }
         public bool IsMale { get; set; }
         public int Age { get; set; }
     }

@@ -20,11 +20,9 @@ namespace BuddySystem.Data
         public string Name { get; set; }
 
         [Required]
-        public string CurrentLocation { get; set; } // Should be set by GPS - no option to edit?
+        public string CurrentLocation { get; set; }
 
-        public bool IsVolunteer { get; set; }
-
-        // added 11/10
+        public bool IsApproved { get; set; }
 
         [Required]
         public bool IsMale { get; set; }

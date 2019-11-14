@@ -22,7 +22,7 @@ namespace BuddySystem.Models.BuddyModels
         public string CurrentLocation { get; set; }
 
         [Required]
-        public bool IsVolunteer { get; set; }
+        public bool IsApproved { get; set; }
 
         [Required]
         public bool IsMale { get; set; }

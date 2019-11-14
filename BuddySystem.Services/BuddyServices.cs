@@ -34,7 +34,7 @@ namespace BuddySystem.Services
                                 BuddyId = b.BuddyId,
                                 Name = b. Name,
                                 CurrentLocation = b.CurrentLocation,
-                                IsVolunteer = b.IsVolunteer,
+                                IsApproved = b.IsApproved,
                                 IsMale = b.IsMale,
                                 Age = b.Age
                             });
@@ -51,7 +51,7 @@ namespace BuddySystem.Services
                     UserId = _userId,
                     Name = model.Name,
                     CurrentLocation = model.CurrentLocation,
-                    IsVolunteer = model.IsVolunteer,
+                    IsApproved = model.IsApproved,
                     IsMale = model.IsMale,
                     Age = model.Age
                 };
@@ -78,7 +78,7 @@ namespace BuddySystem.Services
                         BuddyId = entity.BuddyId,
                         Name = entity.Name,
                         CurrentLocation = entity.CurrentLocation,
-                        IsVolunteer = entity.IsVolunteer,
+                        IsApproved = entity.IsApproved,
                         IsMale = entity.IsMale,
                         Age = entity.Age                    
                     };
@@ -96,7 +96,7 @@ namespace BuddySystem.Services
 
                 entity.Name = model.Name;
                 entity.CurrentLocation = model.CurrentLocation;
-                entity.IsVolunteer = model.IsVolunteer;
+                entity.IsApproved = model.IsApproved;
                 entity.IsMale = model.IsMale;
                 entity.Age = model.Age;
 
@@ -148,7 +148,7 @@ namespace BuddySystem.Services
                     BuddyId = entity.BuddyId,
                     Name = entity.Name,
                     CurrentLocation = entity.CurrentLocation,
-                    IsVolunteer = entity.IsVolunteer,
+                    IsApproved = entity.IsApproved,
                     IsMale = entity.IsMale,
                     Age = entity.Age,
                     ListOfTrips = trips
