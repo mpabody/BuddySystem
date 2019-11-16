@@ -51,11 +51,88 @@ namespace BuddySystem.Controllers
             if (service.CreateTrip(model))
             {
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexAllTrips");
             }
             else
                 ModelState.AddModelError("", "Trip could not be created");
             return View(model);
+        }
+
+        //Get : Trip/Edit/{id}
+        public ActionResult Edit (int id)
+        {
+            var service = CreateTripService();
+            var detail = service.GetTripById(id);
+            var model =
+                new TripEdit
+                {
+                    TripId = detail.TripId,
+                    StartTime = detail.StartTime,
+                    PrimaryBuddyId = detail.PrimaryBuddyId,
+                    VolunteerId = detail.VolunteerId,
+                    StartLocation = detail.StartLocation,
+                    ProjectedEndLocation = detail.ProjectedEndLocation,
+                    EndLocation = detail.EndLocation,
+                    EndTime = detail.EndTime
+                };
+            return View(model);
+        }
+
+        //Post : Trip/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TripEdit model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (model.TripId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateTripService();
+
+            if (service.UpdateTrip(model))
+            {
+                TempData["SaveResult"] = "Your trip was updated.";
+                return RedirectToAction("IndexAllTrips");
+            }
+
+            ModelState.AddModelError("", "Your trip could not be updated.");
+            return View();
+        }
+
+        // GET: Trip/Details/{id}
+        public ActionResult Details(int id)
+        {
+            var service = CreateTripService();
+            var model = service.GetTripById(id);
+            return View(model);
+        }
+
+        // GET: Trip/Delete/{id}
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var service = CreateTripService();
+            var model = service.GetTripById(id);
+
+            return View(model);
+        }
+
+        // POST: Trip/Delete/{id}
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateTripService();
+            service.DeleteTrip(id);
+
+            TempData["SaveResult"] = "This profile was deleted.";
+            return RedirectToAction("IndexAllTrips");
         }
 
 

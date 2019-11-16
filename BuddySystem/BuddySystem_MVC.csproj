@@ -244,6 +244,9 @@
     <Content Include="Views\Trip\IndexForUser.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\IndexAllTrips.cshtml" />
+    <Content Include="Views\Trip\Edit.cshtml" />
+    <Content Include="Views\Trip\Details.cshtml" />
+    <Content Include="Views\Trip\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

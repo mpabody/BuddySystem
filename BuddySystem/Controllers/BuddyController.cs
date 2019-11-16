@@ -112,7 +112,7 @@ namespace BuddySystem.Controllers
             return View(model);
         }
 
-        // POST: Note/Delete/{id}
+        // POST: Buddy/Delete/{id}
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
