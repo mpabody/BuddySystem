@@ -30,6 +30,6 @@ namespace BuddySystem.Data
         [Required]
         public int Age { get; set; }
         
-        public virtual ICollection<Trip> Trips { get; set; }
+        public virtual ICollection<Trip> Trips { get; set; } // this doesn't work, and that's no good. Currently using workaround by querying database... but actual ICollection doesn't work. CW
     }
 }

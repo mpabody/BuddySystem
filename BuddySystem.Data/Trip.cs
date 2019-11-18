@@ -33,6 +33,7 @@ namespace BuddySystem.Data
         [Required]
         public DateTime EndTime { get; set; }
         public string Description { get; set; }
-        
+        public virtual ICollection<AdditionalBuddy> AdditionalBuddies { get; set; }
+
     }
 }

@@ -112,7 +112,20 @@ namespace BuddySystem.Services
                     ctx
                         .Trips
                         .SingleOrDefault(b => b.TripId == id);
-
+                var additionalBuddies = new List<BuddyListItem>();
+                foreach(var buddy in entity.AdditionalBuddies)
+                {
+                    var b = new BuddyListItem()
+                    {
+                        BuddyId = buddy.BuddyId,
+                        Name = buddy.Buddy.Name,
+                        CurrentLocation = buddy.Buddy.CurrentLocation,
+                        IsApproved = buddy.Buddy.IsApproved,
+                        IsMale = buddy.Buddy.IsMale,
+                        Age = buddy.Buddy.Age
+                    };
+                    additionalBuddies.Add(b);
+                }
                 return new TripDetail
                 {
                     TripId = entity.TripId,
@@ -122,7 +135,8 @@ namespace BuddySystem.Services
                     StartLocation = entity.StartLocation,
                     ProjectedEndLocation = entity.ProjectedEndLocation,
                     EndLocation = entity.EndLocation,
-                    EndTime = entity.EndTime
+                    EndTime = entity.EndTime,
+                    AdditionalBuddies = additionalBuddies                  
                 };
             }
         }

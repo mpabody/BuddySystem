@@ -23,6 +23,6 @@ namespace BuddySystem.Models
         public string ProjectedEndLocation { get; set; }
         public string EndLocation { get; set; }
         public DateTime EndTime { get; set; }
-
+        public List<BuddyListItem> AdditionalBuddies { get; set; }
     }
 }

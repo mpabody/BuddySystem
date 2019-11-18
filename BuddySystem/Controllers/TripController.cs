@@ -1,4 +1,5 @@
 ﻿using BuddySystem.Models;
+using BuddySystem.Models.AdditionalBuddy; // intellisense required this using statement, but BuddySystem.Models works for Trip Models... why? maybe I'm overlooking something CW
 using BuddySystem.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -135,6 +136,40 @@ namespace BuddySystem.Controllers
             return RedirectToAction("IndexAllTrips");
         }
 
+        //Get: Trip/AddAdditionBuddy/{id}       Gets a model with trip Id & some details from button click -- need to add button to detail/index views
+        public ActionResult AddAdditonalBuddy(int id)
+        {
+            var additionalBuddyService = CreateAdditionalBuddyService();
+            var model = additionalBuddyService.GetAddAdditionalBuddyModel(id);
+            ViewBag.AdditionalBuddyID = new SelectList(CreateBuddyServiceNoGuid().GetAllBuddies(), "BuddyId", "Name");
+            
+            return View(model);
+        }
+
+        //Post: Trip/Details{id} double check that its directing to proper views... won't matter in API probably
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddAdditionalBuddy(AddAdditionalBuddy model)
+        {
+           // var artistService = NewArtistService();
+            if (!ModelState.IsValid)
+            {
+                ViewBag.AdditionalBuddyID = new SelectList(CreateBuddyServiceNoGuid().GetAllBuddies(), "BuddyId", "Name");
+                return View(model);
+            }
+
+            if (CreateAdditionalBuddyService().PostAdditionalBuddyToDataTable(model))
+            {
+                //TempData["SaveResult"] = "Buddy was added to Trip.";
+                var id = model.TripId;
+                return RedirectToAction("Details", new { id = model.TripId });
+            }
+            else
+                ModelState.AddModelError("", "Buddy could not be added");
+            return View(model);
+        }
+
+
 
         private TripService CreateTripService()
         {
@@ -146,6 +181,12 @@ namespace BuddySystem.Controllers
         {
             var buddyServiceNoGuid = new BuddyService();
             return buddyServiceNoGuid;
+        }
+        private AdditionalBuddyService CreateAdditionalBuddyService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var additionalBuddyService = new AdditionalBuddyService(userId);
+            return additionalBuddyService;
         }
     }
 }

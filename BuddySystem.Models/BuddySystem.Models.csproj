@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalBuddy\AddAdditionalBuddy.cs" />
+    <Compile Include="AdditionalBuddy\AdditionalBuddyListItem.cs" />
     <Compile Include="BuddyModels\BuddyCreate.cs" />
     <Compile Include="BuddyModels\BuddyDetail.cs" />
     <Compile Include="BuddyModels\BuddyEdit.cs" />
@@ -74,5 +76,6 @@
       <Name>BuddySystem.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
