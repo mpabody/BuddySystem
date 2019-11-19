@@ -1,5 +1,5 @@
 ﻿using BuddySystem.Data;
-using BuddySystem.Models.BuddyModels;
+using BuddySystem.Models;
 using BuddySystem.Services;
 using Microsoft.AspNet.Identity;
 using System;

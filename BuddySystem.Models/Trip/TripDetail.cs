@@ -15,10 +15,9 @@ namespace BuddySystem.Models
         public DateTime StartTime { get; set; }
 
         public int PrimaryBuddyId { get; set; }
-        public virtual Buddy PrimaryBuddy { get; set; }
+        public string PrimaryBuddyName { get; set; }
         public int VolunteerId { get; set; }
-        public virtual Buddy Volunteer { get; set; }
-
+        public string VolunteerName { get; set; }
         public string StartLocation { get; set; }
         public string ProjectedEndLocation { get; set; }
         public string EndLocation { get; set; }

@@ -79,6 +79,7 @@ namespace BuddySystem.Services
 
                 entity.StartTime = model.StartTime;
                 entity.BuddyId = model.PrimaryBuddyId;
+                
                 entity.VolunteerId = model.VolunteerId;
                 entity.StartLocation = model.StartLocation;
                 entity.ProjectedEndLocation = model.ProjectedEndLocation;

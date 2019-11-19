@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BuddySystem.Models;
-using BuddySystem.Models.AdditionalBuddy;
-
 namespace BuddySystem.Services
 {
     public class AdditionalBuddyService
@@ -21,14 +19,16 @@ namespace BuddySystem.Services
         { 
             var tripService = new TripService(_userId);
             var tripDetail = tripService.GetTripById(tripId);
-            return new AddAdditionalBuddy()
+            var addBuddy = new AddAdditionalBuddy()
             {
                 TripId = tripDetail.TripId,
-                PrimaryBuddyName = tripDetail.PrimaryBuddy.Name,
-                VolunteerName = tripDetail.Volunteer.Name,
+                PrimaryBuddyName = tripDetail.PrimaryBuddyName,
+                VolunteerName = tripDetail.VolunteerName,
                 StartLocation = tripDetail.StartLocation,
                 ProjectedEndLocation = tripDetail.ProjectedEndLocation
             };
+            return addBuddy;
+
         }
 
         public bool PostAdditionalBuddyToDataTable(AddAdditionalBuddy model)

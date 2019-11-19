@@ -1,5 +1,5 @@
 ﻿using BuddySystem.Models;
-using BuddySystem.Models.AdditionalBuddy; // intellisense required this using statement, but BuddySystem.Models works for Trip Models... why? maybe I'm overlooking something CW
+//using BuddySystem.Models.AdditionalBuddy; intellisense required this using statement, but BuddySystem.Models works for Trip Models... why? maybe I'm overlooking something CW
 using BuddySystem.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -137,11 +137,11 @@ namespace BuddySystem.Controllers
         }
 
         //Get: Trip/AddAdditionBuddy/{id}       Gets a model with trip Id & some details from button click -- need to add button to detail/index views
-        public ActionResult AddAdditonalBuddy(int id)
+        public ActionResult AddAdditionalBuddy(int id)
         {
             var additionalBuddyService = CreateAdditionalBuddyService();
             var model = additionalBuddyService.GetAddAdditionalBuddyModel(id);
-            ViewBag.AdditionalBuddyID = new SelectList(CreateBuddyServiceNoGuid().GetAllBuddies(), "BuddyId", "Name");
+            ViewBag.ListOfAllBuddies = CreateBuddyServiceNoGuid().GetAllBuddies();
             
             return View(model);
         }
@@ -155,6 +155,7 @@ namespace BuddySystem.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.AdditionalBuddyID = new SelectList(CreateBuddyServiceNoGuid().GetAllBuddies(), "BuddyId", "Name");
+                ViewBag.ListOfAllBuddies = CreateBuddyServiceNoGuid().GetAllBuddies();
                 return View(model);
             }
 
@@ -166,7 +167,7 @@ namespace BuddySystem.Controllers
             }
             else
                 ModelState.AddModelError("", "Buddy could not be added");
-            return View(model);
+            return RedirectToAction("IndexAllTrips");
         }
 
 

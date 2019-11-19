@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuddySystem.Models.BuddyModels
+namespace BuddySystem.Models
 {
     public class BuddyCreate
     {

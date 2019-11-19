@@ -1,6 +1,5 @@
 ﻿using BuddySystem.Data;
 using BuddySystem.Models;
-using BuddySystem.Models.BuddyModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

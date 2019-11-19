@@ -65,9 +65,11 @@
             @Html.DisplayFor(modelItem => item.VolunteerName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TripId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TripId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TripId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TripId }) |
+            @Html.ActionLink("Add Additional Buddy", "AddAdditionalBuddy", new { id = item.TripId })
+
         </td>
     </tr>
 }

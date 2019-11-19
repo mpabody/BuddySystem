@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuddySystem.Models.AdditionalBuddy
+namespace BuddySystem.Models
 { // used BuddyListItem instead for GetAdditionalBuddiesForATrip -- keeping this for now, just in case we use it
     public class AdditionalBuddyListItem
     {   
