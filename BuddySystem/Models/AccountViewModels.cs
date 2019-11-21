@@ -46,7 +46,7 @@ namespace BuddySystem.Models
         public string Email { get; set; }
     }
 
-    public class LoginViewModel
+    public class LoginViewModel 
     {
         [Required]
         [Display(Name = "Email")]
