@@ -11,12 +11,12 @@ namespace BuddySystem.Models
     {
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(20, ErrorMessage = "There are too many characters in this field.")]
+        [MaxLength(40, ErrorMessage = "There are too many characters in this field.")]
         public string Name { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(20, ErrorMessage = "There are too many characters in this field.")]
+        [MaxLength(40, ErrorMessage = "There are too many characters in this field.")]
         public string CurrentLocation { get; set; }
 
         [Required]
