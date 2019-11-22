@@ -25,8 +25,8 @@ namespace BuddySystem.Services
                     TripId = e.TripId,
                     StartLocation = e.StartLocation,
                     EndLocation = e.EndLocation,
-                    PrimaryBuddyId = e.BuddyId,
-                    PrimaryBuddyName = e.Buddy.Name,
+                    BuddyId = e.BuddyId,
+                    BuddyName = e.Buddy.Name,
                     VolunteerId = e.VolunteerId,
                     VolunteerName = e.Volunteer.Name,
                     Description = e.Description

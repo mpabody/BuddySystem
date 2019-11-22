@@ -79,7 +79,8 @@ namespace BuddySystem.Services
                         CurrentLocation = entity.CurrentLocation,
                         IsApproved = entity.IsApproved,
                         IsMale = entity.IsMale,
-                        Age = entity.Age                    
+                        Age = entity.Age,
+                        ListOfTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
                     };
             }
         }
@@ -118,8 +119,8 @@ namespace BuddySystem.Services
             }
         }
 
-        //Code below is a work around
-        public BuddyDetail GetCurrentUserBuddy() //Returns BuddyDetail Where List Of
+        
+        public BuddyDetail GetCurrentUserBuddy()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -127,21 +128,23 @@ namespace BuddySystem.Services
                     ctx
                         .Buddies
                         .SingleOrDefault(b => b.UserId == _userId);
+                var trips = new List<TripListItem>(){};
+                foreach(var trip in entity.BuddyTrips)
+                {
+                    var tripToAdd = new TripListItem()
+                    {
+                        TripId = trip.TripId,
+                        StartLocation = trip.StartLocation,
+                        EndLocation = trip.EndLocation,
+                        Description = trip.Description,
+                        BuddyId = trip.BuddyId,
+                        BuddyName = trip.Buddy.Name,
+                        VolunteerId = trip.VolunteerId,
+                        VolunteerName = trip.Volunteer.Name,
+                    };
+                    trips.Add(tripToAdd);
+                }
 
-                var trips = ctx.Trips
-                                     .Where(t => t.BuddyId == entity.BuddyId)
-                                      .Select(t => new TripListItem()
-                                      {
-                                          TripId = t.TripId,
-                                          StartLocation = t.StartLocation,
-                                          EndLocation = t.EndLocation,
-                                          Description = t.Description,
-                                          PrimaryBuddyId = t.BuddyId,
-                                          PrimaryBuddyName = t.Buddy.Name,
-                                          VolunteerId = t.VolunteerId,
-                                          VolunteerName = t.Volunteer.Name
-                                      }).ToList();
-                                
                 return new BuddyDetail()
                 {
                     BuddyId = entity.BuddyId,
@@ -150,10 +153,54 @@ namespace BuddySystem.Services
                     IsApproved = entity.IsApproved,
                     IsMale = entity.IsMale,
                     Age = entity.Age,
-                    ListOfTrips = trips
+                    ListOfTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
                 };
+                //var trips = ctx.Trips
+                //                     .Where(t => t.BuddyId == entity.BuddyId)
+                //                      .Select(t => new TripListItem()
+                //                      {
+                //                          TripId = t.TripId,
+                //                          StartLocation = t.StartLocation,
+                //                          EndLocation = t.EndLocation,
+                //                          Description = t.Description,
+                //                          BuddyId = t.BuddyId,
+                //                          BuddyName = t.Buddy.Name,
+                //                          VolunteerId = t.VolunteerId,
+                //                          VolunteerName = t.Volunteer.Name
+                //                      }).ToList();
+                                
+                //return new BuddyDetail()
+                //{
+                //    BuddyId = entity.BuddyId,
+                //    Name = entity.Name,
+                //    CurrentLocation = entity.CurrentLocation,
+                //    IsApproved = entity.IsApproved,
+                //    IsMale = entity.IsMale,
+                //    Age = entity.Age,
+                //    ListOfTrips = trips
+                //};
                     
             }
+        }
+            private List<TripListItem> BuddyTripsToTripListItem(ICollection<Trip> buddyTrips)
+        {
+            var trips = new List<TripListItem>() { };
+            foreach (var trip in buddyTrips)
+            {
+                var tripToAdd = new TripListItem()
+                {
+                    TripId = trip.TripId,
+                    StartLocation = trip.StartLocation,
+                    EndLocation = trip.EndLocation,
+                    Description = trip.Description,
+                    BuddyId = trip.BuddyId,
+                    BuddyName = trip.Buddy.Name,
+                    VolunteerId = trip.VolunteerId,
+                    VolunteerName = trip.Volunteer.Name,
+                };
+                trips.Add(tripToAdd);
+            }
+            return trips;
         }
     }
 }
