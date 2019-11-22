@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +29,11 @@ namespace BuddySystem.Data
 
         [Required]
         public int Age { get; set; }
-        
-        public virtual ICollection<Trip> Trips { get; set; } // this doesn't work, and that's no good. Currently using workaround by querying database... but actual ICollection doesn't work. CW
+        //[ForeignKey("PrimaryBuddyId")]
+       // [InverseProperty("PrimaryBuddy")]
+        public virtual ICollection<Trip> BuddyTrips { get; set; } // this doesn't work, and that's no good. Currently using workaround by querying database... but actual ICollection doesn't work. CW
+        //[ForeignKey("VolunteerId")]
+       // [InverseProperty("Volunteer")]
+        public virtual ICollection<Trip> VolunteerTrips { get; set; }
     }
 }

@@ -53,6 +53,19 @@ namespace BuddySystem.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<Trip>()
+                        .HasRequired(m => m.Buddy)
+                        .WithMany(t => t.BuddyTrips)
+                        .HasForeignKey(m => m.BuddyId)
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Trip>()
+                        .HasRequired(m => m.Volunteer)
+                        .WithMany(t => t.VolunteerTrips)
+                        .HasForeignKey(m => m.VolunteerId)
+                        .WillCascadeOnDelete(false);
+
         }
     }
 
