@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrimaryBuddyName)
+            @Html.DisplayNameFor(model => model.BuddyName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VolunteerName)
@@ -47,15 +47,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PrimaryBuddyName)
+            @Html.DisplayFor(modelItem => item.BuddyName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VolunteerName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TripId }) |
+            @Html.ActionLink("Add Additional Buddy", "AddAdditionalBuddy", new { id = item.TripId })
         </td>
     </tr>
 }
