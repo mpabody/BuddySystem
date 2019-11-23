@@ -44,6 +44,20 @@ namespace BuddySystem.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteAdditionalBuddyFromTrip(int additionalBuddyId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .AdditionalBuddies
+                        .FirstOrDefault(a => a.AdditionalBuddyId == additionalBuddyId);
+                ctx.AdditionalBuddies.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public List<BuddyListItem> GetAdditionalBuddiesForATrip(Guid userId, int id)
         {
             var tripService = new TripService(userId);

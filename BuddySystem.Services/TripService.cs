@@ -75,7 +75,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                     .Trips
-                    .SingleOrDefault(t => t.TripId == model.TripId);
+                    .FirstOrDefault(t => t.TripId == model.TripId);
 
                 entity.StartTime = model.StartTime;
                 entity.BuddyId = model.PrimaryBuddyId;
@@ -98,21 +98,21 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .Trips
-                        .SingleOrDefault(t => t.TripId == tripId);
+                        .FirstOrDefault(t => t.TripId == tripId);
                 ctx.Trips.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public TripDetail GetTripById(int id)
+        public TripDetail GetTripById(int id)// -- need to make user specific
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Trips
-                        .SingleOrDefault(b => b.TripId == id);
+                        .FirstOrDefault(b => b.TripId == id);
                 var additionalBuddies = new List<BuddyListItem>();
                 foreach(var buddy in entity.AdditionalBuddies)
                 {
@@ -137,7 +137,7 @@ namespace BuddySystem.Services
                     ProjectedEndLocation = entity.ProjectedEndLocation,
                     EndLocation = entity.EndLocation,
                     EndTime = entity.EndTime,
-                    AdditionalBuddies = additionalBuddies                  
+                    AdditionalBuddies = additionalBuddies
                 };
             }
         }

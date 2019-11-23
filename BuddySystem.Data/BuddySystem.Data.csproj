@@ -73,9 +73,9 @@
     <Compile Include="Migrations\201911182159171_AdditionalBuddy.Designer.cs">
       <DependentUpon>201911182159171_AdditionalBuddy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911220150271_AddedICollectionVolunteer_To_Buddy_Applied_modelBuilder_function_to_IdentityModelsApplicationdDbContext.cs" />
-    <Compile Include="Migrations\201911220150271_AddedICollectionVolunteer_To_Buddy_Applied_modelBuilder_function_to_IdentityModelsApplicationdDbContext.Designer.cs">
-      <DependentUpon>201911220150271_AddedICollectionVolunteer_To_Buddy_Applied_modelBuilder_function_to_IdentityModelsApplicationdDbContext.cs</DependentUpon>
+    <Compile Include="Migrations\201911222302557_CaseyFix.cs" />
+    <Compile Include="Migrations\201911222302557_CaseyFix.Designer.cs">
+      <DependentUpon>201911222302557_CaseyFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,8 +98,8 @@
     <EmbeddedResource Include="Migrations\201911182159171_AdditionalBuddy.resx">
       <DependentUpon>201911182159171_AdditionalBuddy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911220150271_AddedICollectionVolunteer_To_Buddy_Applied_modelBuilder_function_to_IdentityModelsApplicationdDbContext.resx">
-      <DependentUpon>201911220150271_AddedICollectionVolunteer_To_Buddy_Applied_modelBuilder_function_to_IdentityModelsApplicationdDbContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911222302557_CaseyFix.resx">
+      <DependentUpon>201911222302557_CaseyFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

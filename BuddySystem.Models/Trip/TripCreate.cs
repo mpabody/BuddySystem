@@ -11,7 +11,7 @@ namespace BuddySystem.Models
     public class TripCreate
     {
         public List<BuddyListItem> ListOfAllBuddies { get; set; }
-        [Required]
+        //[Required]
         public DateTime StartTime { get; set; }
 
         [Required]
@@ -27,7 +27,7 @@ namespace BuddySystem.Models
         public string ProjectedEndLocation { get; set; }
         [Required]
         public string EndLocation { get; set; }
-        [Required]
+        //[Required]
         public DateTime EndTime { get; set; }
     }
 }
