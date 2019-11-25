@@ -75,7 +75,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                     .Trips
-                    .FirstOrDefault(t => t.TripId == model.TripId);
+                    .SingleOrDefault(t => t.TripId == model.TripId);
 
                 entity.StartTime = model.StartTime;
                 entity.BuddyId = model.PrimaryBuddyId;
@@ -98,7 +98,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .Trips
-                        .FirstOrDefault(t => t.TripId == tripId);
+                        .SingleOrDefault(t => t.TripId == tripId);
                 ctx.Trips.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
@@ -112,7 +112,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .Trips
-                        .FirstOrDefault(b => b.TripId == id);
+                        .SingleOrDefault(b => b.TripId == id);
                 var additionalBuddies = new List<BuddyListItem>();
                 foreach(var buddy in entity.AdditionalBuddies)
                 {

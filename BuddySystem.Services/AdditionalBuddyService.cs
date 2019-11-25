@@ -52,7 +52,7 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .AdditionalBuddies
-                        .FirstOrDefault(a => a.AdditionalBuddyId == additionalBuddyId);
+                        .SingleOrDefault(a => a.AdditionalBuddyId == additionalBuddyId);
                 ctx.AdditionalBuddies.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
