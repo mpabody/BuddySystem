@@ -13,20 +13,28 @@ namespace BuddySystem_WebAPI.Controllers
     [Authorize]
     public class BuddyController : ApiController
     {
-
+        // xxxxx/api/buddy
         public IHttpActionResult GetAllBuddies()
         {
-            BuddyService buddyService = CreateBuddyService();
+            var buddyService = CreateBuddyService();
             var buddies = buddyService.GetAllBuddies();
             return Ok(buddies);
         }
-
+        // xxxxx/api/buddy/id
         public IHttpActionResult GetBuddy(int id)
         {
-            BuddyService buddyService = CreateBuddyService();
+            var buddyService = CreateBuddyService();
             var buddy = buddyService.GetBuddyById(id);
             return Ok(buddy);
         }
+
+        // Stretch Goal: I feel like we should be able to get the details for the current user, similar to a profile page for the current user. currently errors out, not sure about URL, maybe /api/buddy/details??
+        //public IHttpActionResult GetCurrentBuddy()
+        //{
+        //    var buddyService = CreateBuddyService();
+        //    var buddy = buddyService.GetCurrentUserBuddy();
+        //    return Ok(buddy);
+        //}
 
         // Create
         public IHttpActionResult Post(BuddyCreate buddy)
