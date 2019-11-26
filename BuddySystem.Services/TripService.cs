@@ -53,7 +53,7 @@ namespace BuddySystem.Services
             var entity = new Trip()
             {
                 StartTime = model.StartTime,
-                BuddyId = model.PrimaryBuddyId,
+                BuddyId = model.BuddyId,
                 VolunteerId = model.VolunteerId,
                 StartLocation = model.StartLocation,
                 ProjectedEndLocation = model.ProjectedEndLocation,
@@ -78,7 +78,7 @@ namespace BuddySystem.Services
                     .SingleOrDefault(t => t.TripId == model.TripId);
 
                 entity.StartTime = model.StartTime;
-                entity.BuddyId = model.PrimaryBuddyId;
+                entity.BuddyId = model.BuddyId;
                 
                 entity.VolunteerId = model.VolunteerId;
                 entity.StartLocation = model.StartLocation;
@@ -131,7 +131,7 @@ namespace BuddySystem.Services
                 {
                     TripId = entity.TripId,
                     StartTime = entity.StartTime,
-                    PrimaryBuddyId = entity.BuddyId,
+                    BuddyId = entity.BuddyId,
                     VolunteerId = entity.VolunteerId,
                     StartLocation = entity.StartLocation,
                     ProjectedEndLocation = entity.ProjectedEndLocation,

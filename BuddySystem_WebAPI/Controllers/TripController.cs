@@ -10,10 +10,11 @@ using System.Web.Http;
 
 namespace BuddySystem_WebAPI.Controllers
 {
+    [RoutePrefix("api/trip")]
     [Authorize]
     public class TripController : ApiController
     {
-        [Route("api/trip/TripsForCurrentUser")]
+        [Route("TripsForCurrentUser")]
         public IHttpActionResult GetTripsForCurrentUser()
         {
             TripService tripService = CreateTripService();
@@ -21,14 +22,14 @@ namespace BuddySystem_WebAPI.Controllers
             return Ok(trips);
         }
 
-        [Route("api/trip/TripsForAllUsers")]
+        [Route("TripsForAllUsers")]
         public IHttpActionResult GetAllTrips()
         {
             TripService tripService = CreateTripService();
             var trips = tripService.GetAllTrips();
             return Ok(trips);
         }
-
+        [Route("{id:int}")]
         public IHttpActionResult GetTrip(int id)
         {
             TripService tripService = CreateTripService();
@@ -37,7 +38,7 @@ namespace BuddySystem_WebAPI.Controllers
         }
 
         // Create
-        [Route("api/trip/CreateTrip")]
+        [Route("CreateTrip")]
         public IHttpActionResult Post(TripCreate trip)
         {
             if (!ModelState.IsValid)

@@ -14,8 +14,8 @@ namespace BuddySystem.Models
         public int TripId { get; set; }
         public DateTime StartTime { get; set; }
 
-        public int PrimaryBuddyId { get; set; }
-        public string PrimaryBuddyName { get; set; }
+        public int BuddyId { get; set; }
+        public string BuddyName { get; set; }
         public int VolunteerId { get; set; }
         public string VolunteerName { get; set; }
         public string StartLocation { get; set; }

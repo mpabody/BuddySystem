@@ -14,7 +14,7 @@ namespace BuddySystem.Models
         public int BuddyToAddId { get; set; }
         [Required]
         public int TripId { get; set; }
-        public string PrimaryBuddyName { get; set; }
+        public string BuddyName { get; set; }
         public string VolunteerName { get; set; }
         public string StartLocation { get; set; }
         public string ProjectedEndLocation { get; set; }

@@ -16,6 +16,7 @@ namespace BuddySystem.Models
         public string BuddyName { get; set; }
         public int VolunteerId { get; set; }
         public string VolunteerName { get; set; }
+        
 
     }
 }

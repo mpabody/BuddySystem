@@ -22,7 +22,7 @@ namespace BuddySystem.Services
             var addBuddy = new AddAdditionalBuddy()
             {
                 TripId = tripDetail.TripId,
-                PrimaryBuddyName = tripDetail.PrimaryBuddyName,
+                BuddyName = tripDetail.BuddyName,
                 VolunteerName = tripDetail.VolunteerName,
                 StartLocation = tripDetail.StartLocation,
                 ProjectedEndLocation = tripDetail.ProjectedEndLocation

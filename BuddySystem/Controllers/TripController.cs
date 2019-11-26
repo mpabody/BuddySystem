@@ -32,11 +32,9 @@ namespace BuddySystem.Controllers
         {
             var buddyServiceNoGuid = CreateBuddyServiceNoGuid();
             var listOfBuddies = buddyServiceNoGuid.GetAllBuddies();
-            var model = new TripCreate()
-            {
-                ListOfAllBuddies = listOfBuddies
-            };
-            return View(model);
+            
+            ViewBag.ListOfAllBuddies = listOfBuddies;
+            return View();
         }
         //Post: Create
         [HttpPost]
@@ -69,7 +67,7 @@ namespace BuddySystem.Controllers
                 {
                     TripId = detail.TripId,
                     StartTime = detail.StartTime,
-                    PrimaryBuddyId = detail.PrimaryBuddyId,
+                    BuddyId = detail.BuddyId,
                     VolunteerId = detail.VolunteerId,
                     StartLocation = detail.StartLocation,
                     ProjectedEndLocation = detail.ProjectedEndLocation,
