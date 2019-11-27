@@ -6,6 +6,8 @@ import {
  } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,12 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     BrowserModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
