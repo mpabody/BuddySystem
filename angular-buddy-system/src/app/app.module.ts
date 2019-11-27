@@ -14,9 +14,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
+  { path: 'login' , component: LoginComponent },
   { path: '**', component: RegistrationComponent }
 ]
 
@@ -24,7 +26,8 @@ const routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
