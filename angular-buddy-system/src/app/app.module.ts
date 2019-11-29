@@ -7,7 +7,8 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
  } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,10 +16,13 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+import { BuddyService } from './services/buddy.service';
+import { BuddyIndexComponent } from './components/buddy/buddy-index/buddy-index.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login' , component: LoginComponent },
+  { path: 'buddies', component: BuddyIndexComponent },
   { path: '**', component: RegistrationComponent }
 ]
 
@@ -27,7 +31,8 @@ const routes = [
     AppComponent,
     HeaderComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    BuddyIndexComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +44,12 @@ const routes = [
     MatButtonModule,
     HttpClientModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    BuddyService
     
   ],
   bootstrap: [AppComponent]

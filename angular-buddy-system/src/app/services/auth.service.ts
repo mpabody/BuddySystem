@@ -13,30 +13,30 @@ const Api_Url = 'https://localhost:44365'
 export class AuthService {
   userInfo: Token;
   isLoggedIn = new Subject<boolean>();
+
   constructor(private http: HttpClient, private router: Router) { }
 
   register(regUserData: RegisterUser) {
     return this.http.post(`${Api_Url}/api/Account/Register`, regUserData);
   }
+
   login(loginInfo) {
     const authString =
-    `grant_type=password&username=${encodeURI(loginInfo.email)}&password=${encodeURI(loginInfo.password)}`;
+      `grant_type=password&username=${encodeURI(loginInfo.email)}&password=${encodeURI(loginInfo.password)}`;
     return this.http.post(`${Api_Url}/token`, authString).subscribe((token: Token) => {
       this.userInfo = token;
       localStorage.setItem('id_token', token.access_token);
       this.isLoggedIn.next(true);
-      this.router.navigate(['/']);
+      this.router.navigate(['/buddies']);
     });
   }
 
     currentUser(): Observable<Object> {
       if (!localStorage.getItem('id_token')) {
         return new Observable(observer => observer.next(false));
-      }
+        }
 
-      const authHeader = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
-
-      return this.http.get(`$${Api_Url}/api/Account/UserInfo`, { headers: authHeader });
+      return this.http.get(`$${Api_Url}/api/Account/UserInfo`, { headers: this.setHeaders() });
     }
 
     logout() {
