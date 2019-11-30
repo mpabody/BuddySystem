@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router'
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
   MatToolbarModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
   MatTableModule
- } from '@angular/material';
+} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './services/auth.service';
@@ -18,11 +18,18 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { BuddyService } from './services/buddy.service';
 import { BuddyIndexComponent } from './components/buddy/buddy-index/buddy-index.component';
+import { BuddyCreateComponent } from './components/buddy/buddy-create/buddy-create.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
-  { path: 'login' , component: LoginComponent },
-  { path: 'buddies', component: BuddyIndexComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'buddies', children: [
+      { path: '', component: BuddyIndexComponent },
+      { path: 'create', component: BuddyCreateComponent }
+    ]
+  },
+
   { path: '**', component: RegistrationComponent }
 ]
 
@@ -32,7 +39,8 @@ const routes = [
     HeaderComponent,
     RegistrationComponent,
     LoginComponent,
-    BuddyIndexComponent
+    BuddyIndexComponent,
+    BuddyCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,7 @@ const routes = [
   providers: [
     AuthService,
     BuddyService
-    
+
   ],
   bootstrap: [AppComponent]
 })
