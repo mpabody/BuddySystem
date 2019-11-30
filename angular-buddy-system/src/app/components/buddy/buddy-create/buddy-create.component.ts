@@ -22,7 +22,7 @@ export class BuddyCreateComponent implements OnInit {
   createForm() {
     this.buddyForm = this.form.group({
       Name: new FormControl,
-      CurrentLocaiton: new FormControl,
+      CurrentLocation: new FormControl,
       IsApproved: new FormControl,
       IsMale: new FormControl,
       Age: new FormControl
