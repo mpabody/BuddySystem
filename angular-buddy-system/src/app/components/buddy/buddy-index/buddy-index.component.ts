@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BuddyService } from 'src/app/services/buddy.service';
 import { Buddy } from 'src/app/models/Buddy';
-import { MatTableDataSource } from '@angular/material';
+import { 
+        MatTableDataSource,
+        MatIcon
+       } from '@angular/material';
+
 
 @Component({
   selector: 'app-buddy-index',
@@ -10,7 +14,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class BuddyIndexComponent implements OnInit {
 
-columnNames = ['details', 'Name', 'CurrentLocation', 'IsApproved', 'IsMale', 'Age'];
+columnNames = ['details', 'Name', 'CurrentLocation', 'IsApproved', 'IsMale', 'Age', 'buttons'];
 
 dataSource: MatTableDataSource<Buddy>;
 

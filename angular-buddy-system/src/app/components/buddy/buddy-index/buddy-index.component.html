@@ -40,11 +40,11 @@
         </ng-container>
 
         <ng-container matColumnDef="buttons">
-            <mat-header-cell *matHeaderCellDef class="matColumnSize">Options</mat-header-cell>
-            <mat-cell *matCellDef="let buddy">
-                <i class="material-icons" routerLink="/buddy/edit/{{buddy.BuddyId}}">edit</i>
-                <i class="material-icons" routerLink="/buddy/delete/{{buddy.BuddyId}}">delete</i>
-            </mat-cell>
-        </ng-container>
+			<mat-header-cell *matHeaderCellDef class="matColumnSize">Options</mat-header-cell>
+			<mat-cell *matCellDef="let buddy">
+				<i class="material-icons" routerLink="/buddy/edit/{{buddy.BuddyId}}">edit</i>
+				<i class="material-icons" routerLink="/buddy/delete/{{buddy.BuddyId}}">delete</i>
+			</mat-cell>
+		</ng-container>
     </mat-table>
 </div>
