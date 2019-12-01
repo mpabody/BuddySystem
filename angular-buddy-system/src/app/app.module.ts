@@ -20,6 +20,7 @@ import { BuddyService } from './services/buddy.service';
 import { BuddyIndexComponent } from './components/buddy/buddy-index/buddy-index.component';
 import { BuddyCreateComponent } from './components/buddy/buddy-create/buddy-create.component';
 import { BuddyDetailComponent } from './components/buddy/buddy-detail/buddy-detail.component';
+import { BuddyEditComponent } from './components/buddy/buddy-edit/buddy-edit.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -28,7 +29,8 @@ const routes = [
     path: 'buddies', children: [
       { path: '', component: BuddyIndexComponent },
       { path: 'create', component: BuddyCreateComponent },
-      { path: 'detail/:id', component: BuddyDetailComponent }
+      { path: 'detail/:id', component: BuddyDetailComponent },
+      { path: 'edit/:id', component: BuddyEditComponent }
     ]
   },
 
@@ -43,7 +45,8 @@ const routes = [
     LoginComponent,
     BuddyIndexComponent,
     BuddyCreateComponent,
-    BuddyDetailComponent
+    BuddyDetailComponent,
+    BuddyEditComponent
   ],
   imports: [
     BrowserModule,
