@@ -27,6 +27,10 @@ export class BuddyService {
     return this.http.put(`${Api_Url}/api/buddy`, buddy, { headers: this.getHeaders() });
   }
 
+  deleteBuddy(id: number) {
+    return this.http.delete(`${Api_Url}/api/buddy/${id}`, { headers: this.getHeaders() });
+  }
+
   private getHeaders() {
     return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
   }
