@@ -17,15 +17,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { BuddyService } from './services/buddy.service';
+import { TripService } from './services/trip.service';
 import { BuddyIndexComponent } from './components/buddy/buddy-index/buddy-index.component';
 import { BuddyCreateComponent } from './components/buddy/buddy-create/buddy-create.component';
 import { BuddyDetailComponent } from './components/buddy/buddy-detail/buddy-detail.component';
 import { BuddyEditComponent } from './components/buddy/buddy-edit/buddy-edit.component';
 import { BuddyDeleteComponent } from './components/buddy/buddy-delete/buddy-delete.component';
+import { TripIndexComponent } from './components/trip/trip-index/trip-index.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'trip', component: TripIndexComponent },
   {
     path: 'buddies', children: [
       { path: '', component: BuddyIndexComponent },
@@ -35,6 +38,11 @@ const routes = [
       { path: 'delete/:id', component: BuddyDeleteComponent }
     ]
   },
+  // {
+  //   path: 'trip', children: [
+  //     { path: '', componentt: TripIndexComponent }
+  //   ]
+  // },
 
   { path: '**', component: RegistrationComponent }
 ]
@@ -49,7 +57,8 @@ const routes = [
     BuddyCreateComponent,
     BuddyDetailComponent,
     BuddyEditComponent,
-    BuddyDeleteComponent
+    BuddyDeleteComponent,
+    TripIndexComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +75,8 @@ const routes = [
   ],
   providers: [
     AuthService,
-    BuddyService
+    BuddyService,
+    TripService
 
   ],
   bootstrap: [AppComponent]
