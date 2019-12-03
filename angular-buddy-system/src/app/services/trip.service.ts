@@ -11,7 +11,7 @@ export class TripService {
   constructor(private http: HttpClient) { }
 
   getTrips() {
-    return this.http.get(`${Api_Url}/api/note`, { headers: this.getHeaders() });
+    return this.http.get(`${Api_Url}/api/trip/TripsForAllUsers`, { headers: this.getHeaders() });
   }
 
   private getHeaders() {

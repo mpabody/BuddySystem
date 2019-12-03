@@ -13,14 +13,28 @@
                 <i class="material-icons" routerLink="/trip/detail/{{trip.tripId}}">library_books</i>
             </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="StartTime">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Start Time</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.StartTime}}</mat-cell>
+        </ng-container>
         <ng-container matColumnDef="StartLocation">
             <mat-header-cell *matHeaderCellDef class="matColumnSize">Start Location</mat-header-cell>
             <mat-cell *matCellDef="let trip">{{trip.StartLocation}}</mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="ProjectedEndLocation">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Projected End Location</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.ProjectedEndLocaiton}}</mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="EndLocation">
             <mat-header-cell *matHeaderCellDef class="matColumnSize">End Location</mat-header-cell>
             <mat-cell *matCellDef="let trip">{{trip.EndLocaiton}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="EndTime">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">End Time</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.EndTime}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Description">
@@ -31,6 +45,11 @@
         <ng-container matColumnDef="BuddyId">
             <mat-header-cell *matHeaderCellDef class="matColumnSize">BuddyId</mat-header-cell>
             <mat-cell *matCellDef="let trip">{{trip.BuddyId}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="BuddyName">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">BuddyName</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.BuddyName}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="VolunteerId">

@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class TripIndexComponent implements OnInit {
 
-  columnNames = ['details', 'TripId', 'StartTime', 'BuddyId', 'BuddyName', 'VolunteerId', 'Volunteer', 'StartLocation', 'ProjectedEndLocation', 'EndLocation', 'EndTime', 'Description', 'buttons'];
+  columnNames = ['details', 'StartTime', 'BuddyId', 'BuddyName', 'VolunteerId', 'Volunteer', 'StartLocation', 'ProjectedEndLocation', 'EndLocation', 'EndTime', 'Description', 'buttons'];
 
   dataSource: MatTableDataSource<Trip>;
 
