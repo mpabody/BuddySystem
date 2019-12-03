@@ -1,3 +1,5 @@
+import { TripListItem } from './Trip';
+
 export interface Buddy {
     UserId?: number;
     BuddyId?: number;
@@ -6,4 +8,6 @@ export interface Buddy {
     IsApproved?: boolean;
     IsMale?: boolean;
     Age?: number;
+    BuddyTrips?: TripListItem[];
+    VolunteerTrips?: TripListItem[];
 }

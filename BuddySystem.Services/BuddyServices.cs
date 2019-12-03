@@ -80,7 +80,7 @@ namespace BuddySystem.Services
                         IsApproved = entity.IsApproved,
                         IsMale = entity.IsMale,
                         Age = entity.Age,
-                        ListOfTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
+                        BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
                     };
             }
         }
@@ -153,7 +153,7 @@ namespace BuddySystem.Services
                     IsApproved = entity.IsApproved,
                     IsMale = entity.IsMale,
                     Age = entity.Age,
-                    ListOfTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
+                    BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
                 };
                 //var trips = ctx.Trips
                 //                     .Where(t => t.BuddyId == entity.BuddyId)

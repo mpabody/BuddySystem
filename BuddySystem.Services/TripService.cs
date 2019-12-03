@@ -39,7 +39,7 @@ namespace BuddySystem.Services
             // uses workaround method in BuddyService   
             var buddyService = new BuddyService(_userId);
             var buddy = buddyService.GetCurrentUserBuddy();
-            return buddy.ListOfTrips;
+            return buddy.BuddyTrips;
         }
 
         //public IEnumerable<TripListItem> GetTripsByBuddyId()

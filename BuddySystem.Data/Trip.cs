@@ -17,8 +17,7 @@ namespace BuddySystem.Data
         [Required]
         public DateTime StartTime { get; set; }
         [Required]
-        [ForeignKey(nameof(Buddy))]
-        
+        [ForeignKey(nameof(Buddy))] 
         public int BuddyId { get; set; }
         public virtual Buddy Buddy { get; set; }
         [Required]
