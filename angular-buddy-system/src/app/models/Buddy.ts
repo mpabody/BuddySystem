@@ -1,4 +1,4 @@
-import { TripListItem } from './Trip';
+import { TripListItem } from './TripListItem';
 
 export interface Buddy {
     UserId?: number;
