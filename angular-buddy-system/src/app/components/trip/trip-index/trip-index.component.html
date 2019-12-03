@@ -1,0 +1,54 @@
+<h1>All Trips</h1>
+<a mat-raised-button color="primary" routerLink="/trip/create">Create New</a>
+<hr />
+
+<div>
+    <mat-table [dataSource]='dataSource'>
+        <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+
+        <ng-container matColumnDef="details">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let trip">
+                <i class="material-icons" routerLink="/trip/detail/{{trip.tripId}}">library_books</i>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="StartLocation">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Start Location</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.StartLocation}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="EndLocation">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">End Location</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.EndLocaiton}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Description</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.Description}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="BuddyId">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">BuddyId</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.BuddyId}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="VolunteerId">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">VolunteerId</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.VolunteerId}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Volunteer">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Volunteer</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.Volunteer}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="buttons">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Options</mat-header-cell>
+            <mat-cell *matCellDef="let trip">
+                <i class="material-icons" routerLink="/trip/edit/{{trip.TripId}}">edit</i>
+                <i class="material-icons" routerLink="/trip/delete/{{trip.TripId}}">delete</i>
+            </mat-cell>
+        </ng-container>
+    </mat-table>
+</div>
