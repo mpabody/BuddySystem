@@ -27,9 +27,14 @@
         <span>{{buddy.Age}}</span>
     </div>
     <br/>
+    
     <div>
         <label><b>List of Trips:</b> </label>
         <div *ngFor="let trip of buddy.BuddyTrips">Start Location: {{trip.StartLocation}} <br/>End Location {{trip.EndLocation}} <br/>Volunteer: {{trip.VolunteerName}} <br/><br/></div>
+    </div>
+    <div>
+        <label><b>List of Trips as Volunteer:</b> </label>
+        <div *ngFor="let trip of buddy.VolunteerTrips">Start Location: {{trip.StartLocation}} <br/>End Location {{trip.EndLocation}} <br/>Primary Buddy: {{trip.BuddyName}} <br/><br/></div>
     </div>
 
     <button mat-raised-button color="accent">Edit</button>

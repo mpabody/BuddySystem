@@ -3,7 +3,6 @@ import { BuddyService } from 'src/app/services/buddy.service';
 import { Buddy } from 'src/app/models/Buddy';
 import { 
         MatTableDataSource,
-        MatIcon
        } from '@angular/material';
 
 

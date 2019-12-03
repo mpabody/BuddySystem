@@ -80,7 +80,8 @@ namespace BuddySystem.Services
                         IsApproved = entity.IsApproved,
                         IsMale = entity.IsMale,
                         Age = entity.Age,
-                        BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
+                        BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips),
+                        VolunteerTrips = BuddyTripsToTripListItem(entity.VolunteerTrips)
                     };
             }
         }
@@ -153,33 +154,9 @@ namespace BuddySystem.Services
                     IsApproved = entity.IsApproved,
                     IsMale = entity.IsMale,
                     Age = entity.Age,
-                    BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips)
-                };
-                //var trips = ctx.Trips
-                //                     .Where(t => t.BuddyId == entity.BuddyId)
-                //                      .Select(t => new TripListItem()
-                //                      {
-                //                          TripId = t.TripId,
-                //                          StartLocation = t.StartLocation,
-                //                          EndLocation = t.EndLocation,
-                //                          Description = t.Description,
-                //                          BuddyId = t.BuddyId,
-                //                          BuddyName = t.Buddy.Name,
-                //                          VolunteerId = t.VolunteerId,
-                //                          VolunteerName = t.Volunteer.Name
-                //                      }).ToList();
-                                
-                //return new BuddyDetail()
-                //{
-                //    BuddyId = entity.BuddyId,
-                //    Name = entity.Name,
-                //    CurrentLocation = entity.CurrentLocation,
-                //    IsApproved = entity.IsApproved,
-                //    IsMale = entity.IsMale,
-                //    Age = entity.Age,
-                //    ListOfTrips = trips
-                //};
-                    
+                    BuddyTrips = BuddyTripsToTripListItem(entity.BuddyTrips),
+                    VolunteerTrips = BuddyTripsToTripListItem(entity.VolunteerTrips)
+                };                             
             }
         }
             private List<TripListItem> BuddyTripsToTripListItem(ICollection<Trip> buddyTrips)
