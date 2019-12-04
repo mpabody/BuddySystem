@@ -1,4 +1,4 @@
-import { TripListItem } from './TripListItem';
+import { Trip } from './Trip';
 
 export interface Buddy {
     UserId?: number;
@@ -8,6 +8,6 @@ export interface Buddy {
     IsApproved?: boolean;
     IsMale?: boolean;
     Age?: number;
-    BuddyTrips?: TripListItem[];
-    VolunteerTrips?: TripListItem[];
+    BuddyTrips?: Trip[];
+    VolunteerTrips?: Trip[];
 }
