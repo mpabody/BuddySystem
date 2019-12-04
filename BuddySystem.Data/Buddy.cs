@@ -29,11 +29,7 @@ namespace BuddySystem.Data
 
         [Required]
         public int Age { get; set; }
-        //[ForeignKey("PrimaryBuddyId")]
-       // [InverseProperty("PrimaryBuddy")]
-        public virtual ICollection<Trip> BuddyTrips { get; set; } // this doesn't work, and that's no good. Currently using workaround by querying database... but actual ICollection doesn't work. CW
-        //[ForeignKey("VolunteerId")]
-       // [InverseProperty("Volunteer")]
+        public virtual ICollection<Trip> BuddyTrips { get; set; }
         public virtual ICollection<Trip> VolunteerTrips { get; set; }
     }
 }

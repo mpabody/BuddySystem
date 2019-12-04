@@ -1,5 +1,4 @@
-import { Time } from '@angular/common';
-
+import { AdditionalBuddy } from './AdditionalBuddy'
 export interface Trip{
     TripId: number;
     StartTime: Date;
@@ -12,5 +11,5 @@ export interface Trip{
     EndLocation: string;
     EndTime: Date;
     Description?: string;
-    // AdditionalBuddies: AdditionalBuddy[]; AdditionalBuddy doesn't exist yet
+    AdditionalBuddies?: AdditionalBuddy[];
 }
