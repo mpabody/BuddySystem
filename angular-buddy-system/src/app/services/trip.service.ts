@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Trip } from '../models/Trip'
 
 const Api_Url = 'https://localhost:44365'
 
@@ -12,6 +13,10 @@ export class TripService {
 
   getTrips() {
     return this.http.get(`${Api_Url}/api/trip/TripsForAllUsers`, { headers: this.getHeaders() });
+  }
+
+  createTrip(trip: Trip) {
+    return this.http.post(`${Api_Url}/api/trip/CreateTrip`, trip, { headers: this.getHeaders() })
   }
 
   private getHeaders() {

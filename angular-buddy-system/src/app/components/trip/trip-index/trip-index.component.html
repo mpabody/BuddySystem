@@ -1,5 +1,6 @@
 <h1>All Trips</h1>
 <a mat-raised-button color="primary" routerLink="/trip/create">Create New</a>
+<a mat-raised-button color="primary" routerLink="/buddies">List Of Buddies</a>
 <hr />
 
 <div>
@@ -24,12 +25,12 @@
 
         <ng-container matColumnDef="ProjectedEndLocation">
             <mat-header-cell *matHeaderCellDef class="matColumnSize">Projected End Location</mat-header-cell>
-            <mat-cell *matCellDef="let trip">{{trip.ProjectedEndLocaiton}}</mat-cell>
+            <mat-cell *matCellDef="let trip">{{trip.ProjectedEndLocation}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="EndLocation">
             <mat-header-cell *matHeaderCellDef class="matColumnSize">End Location</mat-header-cell>
-            <mat-cell *matCellDef="let trip">{{trip.EndLocaiton}}</mat-cell>
+            <mat-cell *matCellDef="let trip">{{trip.EndLocation}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="EndTime">
@@ -57,9 +58,9 @@
             <mat-cell *matCellDef="let trip">{{trip.VolunteerId}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="Volunteer">
-            <mat-header-cell *matHeaderCellDef class="matColumnSize">Volunteer</mat-header-cell>
-            <mat-cell *matCellDef="let trip">{{trip.Volunteer}}</mat-cell>
+        <ng-container matColumnDef="VolunteerName">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">Volunteer Name</mat-header-cell>
+            <mat-cell *matCellDef="let trip">{{trip.VolunteerName}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="buttons">
