@@ -4,11 +4,11 @@ import { Trip } from 'src/app/models/Trip';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: 'app-trip-index',
-  templateUrl: './trip-index.component.html',
-  styleUrls: ['./trip-index.component.css']
+  selector: 'app-trips-for-current-user-index',
+  templateUrl: './trips-for-current-user-index.component.html',
+  styleUrls: ['./trips-for-current-user-index.component.css']
 })
-export class TripIndexComponent implements OnInit {
+export class TripsForCurrentUserIndexComponent implements OnInit {
 
   columnNames = ['details', 'StartLocation', 'EndLocation', 'Description', 'BuddyId', 'BuddyName', 'VolunteerId', 'VolunteerName', 'buttons'];
 
@@ -17,7 +17,7 @@ export class TripIndexComponent implements OnInit {
   constructor(private tripService: TripService) { }
 
   ngOnInit() {
-    this.tripService.getAllTrips().subscribe((trips: Trip[]) => {
+    this.tripService.getTripsForCurrentUser().subscribe((trips: Trip[]) => {
       this.dataSource = new MatTableDataSource<Trip>(trips);
     });
   }

@@ -25,6 +25,7 @@ import { BuddyEditComponent } from './components/buddy/buddy-edit/buddy-edit.com
 import { BuddyDeleteComponent } from './components/buddy/buddy-delete/buddy-delete.component';
 import { TripIndexComponent } from './components/trip/trip-index/trip-index.component';
 import { TripCreateComponent } from './components/trip/trip-create/trip-create.component';
+import { TripsForCurrentUserIndexComponent } from './components/trip/trips-for-current-user-index/trips-for-current-user-index.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -42,7 +43,8 @@ const routes = [
   {
     path: 'trip', children: [
       { path: '', component: TripIndexComponent },
-      { path: 'create', component: TripCreateComponent }
+      { path: 'create', component: TripCreateComponent },
+      { path: 'TripsForCurrentUser', component: TripsForCurrentUserIndexComponent}
     ]
   },
 
@@ -61,7 +63,8 @@ const routes = [
     BuddyEditComponent,
     BuddyDeleteComponent,
     TripIndexComponent,
-    TripCreateComponent
+    TripCreateComponent,
+    TripsForCurrentUserIndexComponent
   ],
   imports: [
     BrowserModule,

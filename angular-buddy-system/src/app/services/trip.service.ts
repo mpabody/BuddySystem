@@ -11,8 +11,12 @@ export class TripService {
 
   constructor(private http: HttpClient) { }
 
-  getTrips() {
+  getAllTrips() {
     return this.http.get(`${Api_Url}/api/trip/TripsForAllUsers`, { headers: this.getHeaders() });
+  }
+
+  getTripsForCurrentUser() {
+    return this.http.get(`${Api_Url}/api/trip/TripsForCurrentUser`, { headers: this.getHeaders() });
   }
 
   createTrip(trip: Trip) {
