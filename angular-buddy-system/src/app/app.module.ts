@@ -52,7 +52,7 @@ const routes = [
       { path: 'detail/:id', component: TripDetailComponent },
       { path: 'TripsForCurrentUser', component: TripsForCurrentUserIndexComponent},
       { path: 'edit/:id', component: TripEditComponent },
-      { path: 'delete/id', component: TripDeleteComponent}
+      { path: 'delete/:id', component: TripDeleteComponent}
     ]
   },
 
