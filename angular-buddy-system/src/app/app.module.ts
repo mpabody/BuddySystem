@@ -23,6 +23,7 @@ import { BuddyCreateComponent } from './components/buddy/buddy-create/buddy-crea
 import { BuddyDetailComponent } from './components/buddy/buddy-detail/buddy-detail.component';
 import { BuddyEditComponent } from './components/buddy/buddy-edit/buddy-edit.component';
 import { BuddyDeleteComponent } from './components/buddy/buddy-delete/buddy-delete.component';
+import { BuddyCurrentUserComponent } from './components/buddy/buddy-current-user/buddy-current-user.component';
 import { TripIndexComponent } from './components/trip/trip-index/trip-index.component';
 import { TripCreateComponent } from './components/trip/trip-create/trip-create.component';
 import { TripsForCurrentUserIndexComponent } from './components/trip/trips-for-current-user-index/trips-for-current-user-index.component';
@@ -37,7 +38,8 @@ const routes = [
       { path: 'create', component: BuddyCreateComponent },
       { path: 'detail/:id', component: BuddyDetailComponent },
       { path: 'edit/:id', component: BuddyEditComponent },
-      { path: 'delete/:id', component: BuddyDeleteComponent }
+      { path: 'delete/:id', component: BuddyDeleteComponent },
+      { path: 'current-user', component: BuddyCurrentUserComponent},
     ]
   },
   {
@@ -62,6 +64,7 @@ const routes = [
     BuddyDetailComponent,
     BuddyEditComponent,
     BuddyDeleteComponent,
+    BuddyCurrentUserComponent,
     TripIndexComponent,
     TripCreateComponent,
     TripsForCurrentUserIndexComponent

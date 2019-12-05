@@ -86,6 +86,7 @@ namespace BuddySystem.Services
             }
         }
 
+
         public bool UpdateBuddy(BuddyEdit model)
         {
             using (var ctx = new ApplicationDbContext())

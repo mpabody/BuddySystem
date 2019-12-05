@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace BuddySystem_WebAPI.Controllers
 {
+    [RoutePrefix("api/buddy")]
     [Authorize]
     public class BuddyController : ApiController
     {
@@ -28,15 +29,15 @@ namespace BuddySystem_WebAPI.Controllers
             return Ok(buddy);
         }
 
-        // Stretch Goal: I feel like we should be able to get the details for the current user, similar to a profile page for the current user. currently errors out, not sure about URL, maybe /api/buddy/details??
-        //public IHttpActionResult GetCurrentBuddy()
-        //{
-        //    var buddyService = CreateBuddyService();
-        //    var buddy = buddyService.GetCurrentUserBuddy();
-        //    return Ok(buddy);
-        //}
+        [Route("CurrentUserBuddy")]
+        public IHttpActionResult GetCurrentUserBuddy()
+        {
+            var buddyService = CreateBuddyService();
+            var buddy = buddyService.GetCurrentUserBuddy();
+            return Ok(buddy);
+        }
 
-        // Create
+       // Create
         public IHttpActionResult Post(BuddyCreate buddy)
         {
             if (!ModelState.IsValid)

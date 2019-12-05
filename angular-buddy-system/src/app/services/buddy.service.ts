@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Buddy } from '../models/Buddy';
+import { Router } from '@angular/router'
 
 const Api_Url = 'https://localhost:44365'
 
@@ -21,6 +22,10 @@ export class BuddyService {
 
   getBuddy(id) {
     return this.http.get(`${Api_Url}/api/buddy/${id}`, {headers: this.getHeaders() });
+  }
+
+  getCurrentUserBuddy() {
+    return this.http.get(`${Api_Url}/api/buddy/CurrentUserBuddy`, {headers: this.getHeaders()});
   }
 
   updateBuddy(buddy: Buddy) {
