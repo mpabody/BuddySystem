@@ -16,7 +16,7 @@ export class TripService {
   }
 
   getTrip(id) {
-    return this.http.get(`${Api_Url}/api/trip/${id}`, {headers: this.getHeaders() });
+    return this.http.get(`${Api_Url}/api/trip/${id}`, { headers: this.getHeaders() });
   }
   getTripsForCurrentUser() {
     return this.http.get(`${Api_Url}/api/trip/TripsForCurrentUser`, { headers: this.getHeaders() });
@@ -27,7 +27,11 @@ export class TripService {
   }
 
   updateTrip(trip: Trip) {
-    return this.http.put(`${Api_Url}/api/trip`, trip, {headers: this.getHeaders() });
+    return this.http.put(`${Api_Url}/api/trip`, trip, { headers: this.getHeaders() });
+  }
+
+  deleteTrip(id: number) {
+    return this.http.delete(`${Api_Url}/api/trip/${id}`, { headers: this.getHeaders() });
   }
 
   private getHeaders() {

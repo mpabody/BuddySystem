@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BuddyService } from 'src/app/services/buddy.service';
 import { Buddy } from 'src/app/models/Buddy';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-buddy-delete',
@@ -29,5 +28,4 @@ export class BuddyDeleteComponent implements OnInit {
       this.router.navigate(['/buddies']);
     });
   }
-
 }
