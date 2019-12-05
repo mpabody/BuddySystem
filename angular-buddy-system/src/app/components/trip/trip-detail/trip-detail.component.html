@@ -1,0 +1,51 @@
+<h1>Details</h1>
+<hr />
+
+<div *ngIf="trip">
+    <div>
+        <label>TripId: </label>
+        <span>{{trip.TripId}}</span>
+    </div>
+    <div>
+        <label>BuddyId: </label>
+        <span>{{trip.TripId}}</span>
+    </div>
+    <div>
+        <label>Buddy Name: </label>
+        <span>{{trip.BuddyName}}</span>
+    </div>
+    <div>
+        <label>Volunteer Id: </label>
+        <span>{{trip.VolunteerId}}</span>
+    </div>
+    <div>
+        <label>Volunteer Name: </label>
+        <span>{{trip.VolunteerName}}</span>
+    </div>
+    <div>
+        <label>StartLocation: </label>
+        <span>{{trip.StartLocation}}</span>
+    </div>
+    <div>
+        <label>Description: </label>
+        <span>{{trip.Description}}</span>
+    </div>
+    <div>
+        <label>EndLocation: </label>
+        <span>{{trip.EndLocation}}</span>
+    </div>
+    <br/>
+    
+    <div>
+        <label><b>Additional Buddies:</b> </label>
+        <div *ngFor="let additionalBuddy of trip.AdditionalBuddies">Additional Buddy: {{additionalBuddy.Name}} </div>
+    </div>
+    <!-- <div>
+        <label><b>List of Trips as Volunteer:</b> </label>
+        <div *ngFor="let trip of buddy.VolunteerTrips">Start Location: {{trip.StartLocation}} <br/>End Location {{trip.EndLocation}} <br/>Primary Buddy: {{trip.BuddyName}} <br/><br/></div>
+    </div> -->
+
+    <button mat-raised-button color="accent">Edit</button>
+</div>
+
+<button mat-raised-button color="primary" routerLink="/buddies">Back to List</button>
