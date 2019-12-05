@@ -1,7 +1,8 @@
-<h1>All Trips</h1>
-<a mat-raised-button color="primary" routerLink="/trip/create">Create New</a> | 
-<a mat-raised-button color="primary" routerLink="/trip/TripsForCurrentUser">Trips For This User</a> | 
+<h1>All Trips For This User</h1>
+<a mat-raised-button color="primary" routerLink="/trip/create">Create New</a>
 <a mat-raised-button color="primary" routerLink="/buddies">List Of Buddies</a>
+<a mat-raised-button color="primary" routerLink="/trip">See All Trips</a>
+
 <hr />
 
 <div>
@@ -12,7 +13,7 @@
         <ng-container matColumnDef="details">
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
             <mat-cell *matCellDef="let trip">
-                <i class="material-icons" routerLink="/trip/detail/{{trip.TripId}}">library_books</i>
+                <i class="material-icons" routerLink="/trip/detail/{{trip.tripId}}">library_books</i>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="StartTime">
