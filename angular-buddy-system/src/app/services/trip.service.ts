@@ -26,6 +26,10 @@ export class TripService {
     return this.http.post(`${Api_Url}/api/trip/CreateTrip`, trip, { headers: this.getHeaders() })
   }
 
+  updateTrip(trip: Trip) {
+    return this.http.put(`${Api_Url}/api/trip`, trip, {headers: this.getHeaders() });
+  }
+
   private getHeaders() {
     return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
   }
