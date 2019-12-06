@@ -1,0 +1,20 @@
+<h1>Add Additional Buddy</h1>
+<hr />
+
+<form (ngSubmit)="onSubmit()" [formGroup]="addAdditionalBuddyForm">
+    <div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="BuddyId" formControlName="BuddyId" type="BuddyId" required />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="TripId" formControlName="TripId" type="TripId" required />
+            </mat-form-field>
+        </div>
+        <button mat-raised-button class="nav-btn" color="primary" type="submit">Create Trip</button>
+    </div>
+</form>
+
+<a mat-button routerLink="/trip">Back to List</a>

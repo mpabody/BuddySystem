@@ -30,6 +30,7 @@ import { TripDetailComponent } from './components/trip/trip-detail/trip-detail.c
 import { TripsForCurrentUserIndexComponent } from './components/trip/trips-for-current-user-index/trips-for-current-user-index.component';
 import { TripEditComponent } from './components/trip/trip-edit/trip-edit.component';
 import { TripDeleteComponent } from './components/trip/trip-delete/trip-delete.component';
+import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-additional-buddy/trip-add-additional-buddy.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -52,7 +53,9 @@ const routes = [
       { path: 'detail/:id', component: TripDetailComponent },
       { path: 'TripsForCurrentUser', component: TripsForCurrentUserIndexComponent},
       { path: 'edit/:id', component: TripEditComponent },
-      { path: 'delete/:id', component: TripDeleteComponent}
+      { path: 'delete/:id', component: TripDeleteComponent},
+      { path: 'addAdditionalBuddy', component: TripAddAdditionalBuddyComponent}
+
     ]
   },
 
@@ -77,6 +80,7 @@ const routes = [
     TripsForCurrentUserIndexComponent,
     TripEditComponent,
     TripDeleteComponent,
+    TripAddAdditionalBuddyComponent,
   ],
   imports: [
     BrowserModule,

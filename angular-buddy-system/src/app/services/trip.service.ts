@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Trip } from '../models/Trip'
+import { Trip } from '../models/Trip';
+import { AdditionalBuddy } from '../models/AdditionalBuddy';
+
 
 const Api_Url = 'https://localhost:44365'
 
@@ -32,6 +34,10 @@ export class TripService {
 
   deleteTrip(id: number) {
     return this.http.delete(`${Api_Url}/api/trip/${id}`, { headers: this.getHeaders() });
+  }
+
+  addAdditionalBuddy(additionalBuddy: AdditionalBuddy) {
+    return this.http.post(`${Api_Url}/api/trip/AddAdditionalBuddy`, additionalBuddy, { headers: this.getHeaders() });
   }
 
   private getHeaders() {
