@@ -1,4 +1,4 @@
-<h1>Edit a Buddy</h1>
+<h1>Edit a Trip</h1>
 <hr />
 
 <div *ngIf="trip">
@@ -23,16 +23,26 @@
                 <input matInput placeholder="BuddyName" formControlName="BuddyName" type="string" required
                     [value]="trip.buddy.Name" />
             </div> -->
+            
             <div mat-form-field>
                 <label><b>VolunteerId</b></label><br />
                 <input matInput placeholder="VolunteerId" formControlName="VolunteerId" type="number" required
                     [value]="trip.VolunteerId" />
             </div>
+
             <!-- <div mat-form-field>
                 <label><b>Volunteer Name</b></label><br />
                 <input matInput placeholder="VoluneerName" formControlName="VolunteerName" type="string" required
                     [value]="trip.buddy.Name" />
             </div> -->
+
+            <!-- <div class="form-group">
+                <label for="buddy">Volunteer</label>
+                <select class="form-control" id="buddy" required [(ngModel)]="model.Buddy" name="buddy">
+                    <option *ngFor="let buddy of buddies" [value]="buddy">{{buddy}}</option>
+                </select>
+            </div> -->
+
             <div mat-form-field>
                 <label><b>Start Location</b></label><br />
                 <input matInput placeholder="StartLocation" formControlName="StartLocation" type="string" required

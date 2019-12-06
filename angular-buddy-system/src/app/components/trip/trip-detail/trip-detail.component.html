@@ -41,12 +41,8 @@
         <div *ngFor="let additionalBuddy of trip.AdditionalBuddies">Additional Buddy: {{additionalBuddy.Name}} </div>
         <br />
     </div>
-    <!-- <div>
-        <label><b>List of Trips as Volunteer:</b> </label>
-        <div *ngFor="let trip of buddy.VolunteerTrips">Start Location: {{trip.StartLocation}} <br/>End Location {{trip.EndLocation}} <br/>Primary Buddy: {{trip.BuddyName}} <br/><br/></div>
-    </div> -->
 
     <a mat-raised-button color="primary" routerLink="/trip/addAdditionalBuddy">Add Additional Buddy</a> |
-</div>
 
-<button mat-raised-button color="primary" routerLink="/buddies">Back to List</button>
+    <button mat-raised-button color="primary" routerLink="/buddies">Back to List</button>
+</div>
