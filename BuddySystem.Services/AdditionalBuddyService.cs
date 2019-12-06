@@ -36,7 +36,7 @@ namespace BuddySystem.Services
             var entity = new AdditionalBuddy()
             {
                 TripId = model.TripId,
-                BuddyId = model.BuddyToAddId
+                BuddyId = model.BuddyId
             };
             using (var ctx = new ApplicationDbContext())
             {

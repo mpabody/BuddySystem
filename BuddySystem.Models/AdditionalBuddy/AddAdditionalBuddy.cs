@@ -11,7 +11,7 @@ namespace BuddySystem.Models
     {
        
         [Required]
-        public int BuddyToAddId { get; set; }
+        public int BuddyId { get; set; }
         [Required]
         public int TripId { get; set; }
         public string BuddyName { get; set; }
