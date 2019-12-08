@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdditionalBuddy\AddAdditionalBuddy.cs" />
+    <Compile Include="AdditionalBuddy\AdditionalBuddyDetail.cs" />
     <Compile Include="AdditionalBuddy\AdditionalBuddyListItem.cs" />
     <Compile Include="BuddyModels\BuddyCreate.cs" />
     <Compile Include="BuddyModels\BuddyDetail.cs" />

@@ -31,6 +31,8 @@ import { TripsForCurrentUserIndexComponent } from './components/trip/trips-for-c
 import { TripEditComponent } from './components/trip/trip-edit/trip-edit.component';
 import { TripDeleteComponent } from './components/trip/trip-delete/trip-delete.component';
 import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-additional-buddy/trip-add-additional-buddy.component';
+import { TripRemoveAdditionalBuddyComponent } from './components/trip/trip-remove-additional-buddy/trip-remove-additional-buddy.component';
+import { TripAdditionalBuddiesForTripComponent } from './components/trip/trip-additional-buddies-for-trip/trip-additional-buddies-for-trip.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -54,7 +56,8 @@ const routes = [
       { path: 'TripsForCurrentUser', component: TripsForCurrentUserIndexComponent},
       { path: 'edit/:id', component: TripEditComponent },
       { path: 'delete/:id', component: TripDeleteComponent},
-      { path: 'addAdditionalBuddy', component: TripAddAdditionalBuddyComponent}
+      { path: 'addAdditionalBuddy', component: TripAddAdditionalBuddyComponent},
+      { path: 'removeAdditionalBuddy/:additionalBuddyId', component: TripRemoveAdditionalBuddyComponent}
 
     ]
   },
@@ -81,6 +84,8 @@ const routes = [
     TripEditComponent,
     TripDeleteComponent,
     TripAddAdditionalBuddyComponent,
+    TripRemoveAdditionalBuddyComponent,
+    TripAdditionalBuddiesForTripComponent,
   ],
   imports: [
     BrowserModule,

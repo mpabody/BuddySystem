@@ -40,6 +40,14 @@ export class TripService {
     return this.http.post(`${Api_Url}/api/trip/AddAdditionalBuddy`, additionalBuddy, { headers: this.getHeaders() });
   }
 
+  getAdditionalBuddy(additionalBuddyId) {
+    return this.http.get(`${Api_Url}/api/trip/GetAdditionalBuddy?additionalBuddyId=${additionalBuddyId}`, { headers: this.getHeaders() });
+  }
+
+  removeAdditionalBuddy(id: number) {
+    return this.http.delete(`${Api_Url}/api/trip/RemoveAdditionalBuddy/${id}?buddyId=${id}`, { headers: this.getHeaders() });
+  }
+
   private getHeaders() {
     return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
   }

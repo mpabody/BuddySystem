@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BuddySystem.Models;
+using BuddySystem.Models.AdditionalBuddy;
+
 namespace BuddySystem.Services
 {
     public class AdditionalBuddyService
@@ -14,9 +16,9 @@ namespace BuddySystem.Services
         {
             _userId = userId;
         }
-       // public AdditionalBuddyService() { }
+        // public AdditionalBuddyService() { }
         public AddAdditionalBuddy GetAddAdditionalBuddyModel(int tripId)
-        { 
+        {
             var tripService = new TripService(_userId);
             var tripDetail = tripService.GetTripById(tripId);
             var addBuddy = new AddAdditionalBuddy()
@@ -58,11 +60,25 @@ namespace BuddySystem.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public List<BuddyListItem> GetAdditionalBuddiesForATrip(Guid userId, int id)
+        public AdditionalBuddyDetail GetAdditionalBuddyById(int additionalBuddyId)
         {
-            var tripService = new TripService(userId);
-            var trip = tripService.GetTripById(id);
-            return trip.AdditionalBuddies;  
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .AdditionalBuddies
+                        .SingleOrDefault(a => a.AdditionalBuddyId == additionalBuddyId);
+
+                var additionalBuddyDetail = new AdditionalBuddyDetail()
+                {
+                    AdditionalBuddyId = entity.AdditionalBuddyId,
+                    BuddyId = entity.BuddyId,
+                    BuddyName = entity.Buddy.Name,
+                    TripId = entity.TripId,
+                };
+                return additionalBuddyDetail;
+
+            }
         }
     }
 }

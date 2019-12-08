@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TripService } from 'src/app/services/trip.service';
 import { Trip } from 'src/app/models/Trip';
+import { AdditionalBuddy } from 'src/app/models/AdditionalBuddy';
 
 @Component({
   selector: 'app-trip-detail',
@@ -11,7 +12,7 @@ import { Trip } from 'src/app/models/Trip';
 export class TripDetailComponent implements OnInit {
 
   trip: Trip;
-
+  
   constructor(private activatedRoute: ActivatedRoute, private tripService: TripService) { }
 
   ngOnInit() {

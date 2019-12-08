@@ -36,13 +36,18 @@
     </div>
     <br />
 
-    <div>
-        <label><b>Additional Buddies:</b> </label>
-        <div *ngFor="let additionalBuddy of trip.AdditionalBuddies">Additional Buddy: {{additionalBuddy.Name}} </div>
-        <br />
-    </div>
+    <label>AdditionalBuddies: </label>
+    <br />
+    <app-trip-additional-buddies-for-trip
+        *ngFor="let additionalBuddy of trip.AdditionalBuddies"
+            [additionalBuddy]="additionalBuddy"
+    >
+    </app-trip-additional-buddies-for-trip>
+       
+    
+<br/>
+<br/>
 
     <a mat-raised-button color="primary" routerLink="/trip/addAdditionalBuddy">Add Additional Buddy</a> |
 
     <button mat-raised-button color="primary" routerLink="/buddies">Back to List</button>
-</div>

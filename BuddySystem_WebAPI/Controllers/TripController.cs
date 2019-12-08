@@ -93,7 +93,8 @@ namespace BuddySystem_WebAPI.Controllers
             return Ok();
         }
 
-        [Route("RemoveAdditionalBudy/{id:int}")]
+        //Remove Additional Buddy
+        [Route("RemoveAdditionalBuddy/{id:int}")]
         public IHttpActionResult DeleteAdditionalBuddy(int buddyId)
         {
             var service = CreateAdditionalBuddyService();
@@ -104,6 +105,14 @@ namespace BuddySystem_WebAPI.Controllers
             return Ok();
         }
 
+        //Get Additional Buddy
+        [Route("GetAdditionalBuddy")]
+        public IHttpActionResult GetAdditionalBuddyById(int additionalBuddyId)
+        {
+            var service = CreateAdditionalBuddyService();
+            var additionalBuddy = service.GetAdditionalBuddyById(additionalBuddyId);
+            return Ok(additionalBuddy);
+        }
 
 
         private TripService CreateTripService()
