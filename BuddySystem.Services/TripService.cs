@@ -1,5 +1,6 @@
 ﻿using BuddySystem.Data;
 using BuddySystem.Models;
+using BuddySystem.Models.AdditionalBuddy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,17 +114,15 @@ namespace BuddySystem.Services
                     ctx
                         .Trips
                         .SingleOrDefault(b => b.TripId == id);
-                var additionalBuddies = new List<BuddyListItem>();
+                var additionalBuddies = new List<AdditionalBuddyDetail>();
                 foreach(var buddy in entity.AdditionalBuddies)
                 {
-                    var b = new BuddyListItem()
+                    var b = new AdditionalBuddyDetail()
                     {
+                        AdditionalBuddyId = buddy.AdditionalBuddyId,
                         BuddyId = buddy.BuddyId,
-                        Name = buddy.Buddy.Name,
-                        CurrentLocation = buddy.Buddy.CurrentLocation,
-                        IsApproved = buddy.Buddy.IsApproved,
-                        IsMale = buddy.Buddy.IsMale,
-                        Age = buddy.Buddy.Age
+                        BuddyName = buddy.Buddy.Name,
+                        TripId = buddy.TripId
                     };
                     additionalBuddies.Add(b);
                 }

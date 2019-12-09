@@ -1,4 +1,5 @@
 ﻿using BuddySystem.Data;
+using BuddySystem.Models.AdditionalBuddy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,6 @@ namespace BuddySystem.Models
         public string ProjectedEndLocation { get; set; }
         public string EndLocation { get; set; }
         public DateTime EndTime { get; set; }
-        public List<BuddyListItem> AdditionalBuddies { get; set; }
+        public List<AdditionalBuddyDetail> AdditionalBuddies { get; set; }
     }
 }

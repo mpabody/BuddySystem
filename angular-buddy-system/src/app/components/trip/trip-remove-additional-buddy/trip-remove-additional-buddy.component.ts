@@ -15,7 +15,7 @@ additionalBuddy: AdditionalBuddy;
 
 
   constructor(private activatedRoute: ActivatedRoute, private tripService: TripService, private router: Router) {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.paramMap.subscribe(params => {
         this.tripService.getAdditionalBuddy(params.get('additionalBuddyId')).subscribe((additionalBuddy: AdditionalBuddy) => {
         this.additionalBuddy = additionalBuddy;
       })

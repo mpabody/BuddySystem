@@ -19,6 +19,7 @@ export class TripDetailComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(routeData => {
       this.tripService.getTrip(routeData.get('id')).subscribe((trip: Trip) => {
         this.trip = trip;
+        console.log(trip);
       });
     });
   }
