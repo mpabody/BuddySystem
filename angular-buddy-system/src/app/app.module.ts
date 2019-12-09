@@ -37,7 +37,7 @@ import { TripAdditionalBuddiesForTripComponent } from './components/trip/trip-ad
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  //{ path: 'trip', component: TripIndexComponent },
+  
   {
     path: 'buddies', children: [
       { path: '', component: BuddyIndexComponent },

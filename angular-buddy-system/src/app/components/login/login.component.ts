@@ -27,6 +27,5 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.login(this.loginForm.value);
-    console.log("Jsux approves this Login")
   }
 }

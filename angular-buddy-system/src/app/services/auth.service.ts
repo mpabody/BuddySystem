@@ -12,9 +12,14 @@ const Api_Url = 'https://localhost:44365'
 })
 export class AuthService {
   userInfo: Token;
-  isLoggedIn = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  loggedIn: boolean;
+
+  constructor(private http: HttpClient, private router: Router) { 
+    if (localStorage.getItem('id_token')) {
+      this.loggedIn = true;
+    }
+  }
 
   register(regUserData: RegisterUser) {
     return this.http.post(`${Api_Url}/api/Account/Register`, regUserData);
@@ -26,8 +31,9 @@ export class AuthService {
     return this.http.post(`${Api_Url}/token`, authString).subscribe((token: Token) => {
       this.userInfo = token;
       localStorage.setItem('id_token', token.access_token);
-      this.isLoggedIn.next(true);
+      this.loggedIn = true;
       this.router.navigate(['/buddies/current-user']);
+      console.log("JSux approves this Login");
     });
   }
 
@@ -40,8 +46,8 @@ export class AuthService {
     }
 
     logout() {
-      localStorage.clear();
-      this.isLoggedIn.next(false);
+      localStorage.removeItem('id_token');
+      this.loggedIn = false;
 
       this.http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeaders() });
       this.router.navigate(['/login']);

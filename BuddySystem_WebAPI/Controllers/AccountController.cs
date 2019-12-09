@@ -17,6 +17,8 @@ using BuddySystem_WebAPI.Models;
 using BuddySystem_WebAPI.Providers;
 using BuddySystem_WebAPI.Results;
 using BuddySystem.Data;
+using BuddySystem.Models;
+using BuddySystem.Services;
 
 namespace BuddySystem_WebAPI.Controllers
 {
@@ -337,6 +339,18 @@ namespace BuddySystem_WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            var buddyCreate = new BuddyCreate
+            {
+                Name = model.Name,
+                CurrentLocation = model.CurrentLocation,
+                IsMale = model.IsMale,
+                Age = model.Age
+            };
+
+            var service = new BuddyService(Guid.Parse(user.Id));
+
+            service.CreateBuddy(buddyCreate);
 
             return Ok();
         }
