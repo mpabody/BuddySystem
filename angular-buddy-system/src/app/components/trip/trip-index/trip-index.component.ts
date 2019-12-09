@@ -19,6 +19,7 @@ export class TripIndexComponent implements OnInit {
   ngOnInit() {
     this.tripService.getAllTrips().subscribe((trips: Trip[]) => {
       this.dataSource = new MatTableDataSource<Trip>(trips);
+      console.log(trips);
     });
   }
 }
