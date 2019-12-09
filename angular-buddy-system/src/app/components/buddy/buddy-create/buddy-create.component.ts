@@ -31,7 +31,7 @@ export class BuddyCreateComponent implements OnInit {
 
   onSubmit() {
     this.buddyService.createBuddy(this.buddyForm.value).subscribe(() => {
-      this.router.navigate(['/buddies']);
+      this.router.navigate(['/buddies/current-user']);
     });
   }
 

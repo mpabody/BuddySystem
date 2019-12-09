@@ -31,7 +31,6 @@ import { TripsForCurrentUserIndexComponent } from './components/trip/trips-for-c
 import { TripEditComponent } from './components/trip/trip-edit/trip-edit.component';
 import { TripDeleteComponent } from './components/trip/trip-delete/trip-delete.component';
 import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-additional-buddy/trip-add-additional-buddy.component';
-import { LogoutComponent } from './logout/logout.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -82,7 +81,6 @@ const routes = [
     TripEditComponent,
     TripDeleteComponent,
     TripAddAdditionalBuddyComponent,
-    LogoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,13 +12,11 @@ const Api_Url = 'https://localhost:44365'
 })
 export class AuthService {
   userInfo: Token;
-  // isLoggedIn = new Subject<boolean>();
 
   loggedIn: boolean;
 
   constructor(private http: HttpClient, private router: Router) { 
     if (localStorage.getItem('id_token')) {
-      // this.isLoggedIn.next(true);
       this.loggedIn = true;
     }
   }
@@ -34,8 +32,8 @@ export class AuthService {
       this.userInfo = token;
       localStorage.setItem('id_token', token.access_token);
       this.loggedIn = true;
-      // this.isLoggedIn.next(true);
       this.router.navigate(['/buddies/current-user']);
+      console.log("JSux approves this Login");
     });
   }
 
@@ -49,7 +47,6 @@ export class AuthService {
 
     logout() {
       localStorage.removeItem('id_token');
-      // this.isLoggedIn.next(false);
       this.loggedIn = false;
 
       this.http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeaders() });
