@@ -34,13 +34,13 @@ import { TripDeleteComponent } from './components/trip/trip-delete/trip-delete.c
 import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-additional-buddy/trip-add-additional-buddy.component';
 import { TripRemoveAdditionalBuddyComponent } from './components/trip/trip-remove-additional-buddy/trip-remove-additional-buddy.component';
 import { TripAdditionalBuddiesForTripComponent } from './components/trip/trip-additional-buddies-for-trip/trip-additional-buddies-for-trip.component';
-
+import { AuthGuard } from './guards/auth.guard';
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   
   {
-    path: 'buddies', children: [
+    path: 'buddies', canActivate: [AuthGuard], children: [
       { path: '', component: BuddyIndexComponent },
       { path: 'create', component: BuddyCreateComponent },
       { path: 'detail/:id', component: BuddyDetailComponent },
@@ -50,7 +50,7 @@ const routes = [
     ]
   },
   {
-    path: 'trip', children: [
+    path: 'trip', canActivate: [AuthGuard], children: [
       { path: '', component: TripIndexComponent },
       { path: 'create', component: TripCreateComponent },
       { path: 'detail/:id', component: TripDetailComponent },
@@ -105,8 +105,8 @@ const routes = [
   providers: [
     AuthService,
     BuddyService,
-    TripService
-
+    TripService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
