@@ -21,6 +21,14 @@ namespace BuddySystem_WebAPI.Controllers
             var buddies = buddyService.GetAllBuddies();
             return Ok(buddies);
         }
+        [Route("volunteers")]
+        public IHttpActionResult GetAllVolunteers()
+        {
+            var buddyService = CreateBuddyService();
+            var volunteers = buddyService.GetAllVolunteers();
+            return Ok(volunteers);
+        }
+
         // xxxxx/api/buddy/id
         public IHttpActionResult GetBuddy(int id)
         {

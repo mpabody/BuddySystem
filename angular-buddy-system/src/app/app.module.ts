@@ -9,7 +9,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSelectModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -97,6 +98,7 @@ const routes = [
     MatToolbarModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatSelectModule,
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,

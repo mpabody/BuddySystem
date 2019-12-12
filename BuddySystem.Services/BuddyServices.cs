@@ -42,6 +42,30 @@ namespace BuddySystem.Services
             }
         }
 
+        //Display all approved volunteers
+        public List<BuddyListItem> GetAllVolunteers()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var buddyQuery =
+                    ctx
+                        .Buddies
+                        .Where(b => b.IsApproved == true)
+                        .Select(
+                            b => new BuddyListItem
+                            {
+                                BuddyId = b.BuddyId,
+                                Name = b.Name,
+                                CurrentLocation = b.CurrentLocation,
+                                IsApproved = b.IsApproved,
+                                IsMale = b.IsMale,
+                                Age = b.Age
+                            });
+
+                return buddyQuery.ToList();
+            }
+        }
+
         public bool CreateBuddy(BuddyCreate model)
         {
             var entity =

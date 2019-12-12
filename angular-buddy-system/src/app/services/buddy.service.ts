@@ -16,6 +16,10 @@ export class BuddyService {
     return this.http.get(`${Api_Url}/api/buddy`, { headers: this.getHeaders() });
   }
 
+  getAllVolunteers() {
+    return this.http.get(`${Api_Url}/api/buddy`, { headers: this.getHeaders() });
+  }
+
   createBuddy(buddy: Buddy) {
     return this.http.post(`${Api_Url}/api/buddy`, buddy, { headers: this.getHeaders() });
   }
