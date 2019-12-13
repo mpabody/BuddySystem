@@ -45,7 +45,7 @@ export class TripEditComponent implements OnInit {
       StartLocation: new FormControl(this.trip.StartLocation),
       ProjectedEndLocation: new FormControl(this.trip.ProjectedEndLocation),
       EndLocation: new FormControl(this.trip.EndLocation),
-      EndTime: new FormControl((new Date(this.trip.EndTime).getTime()))
+      EndTime: new FormControl(this.trip.EndTime)
     });
   }
 

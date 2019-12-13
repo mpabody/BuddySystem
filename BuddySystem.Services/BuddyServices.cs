@@ -138,10 +138,23 @@ namespace BuddySystem.Services
                 var entity =
                     ctx
                         .Buddies
-                        .SingleOrDefault(b => b.BuddyId == buddyId && b.UserId == _userId); 
+                        .SingleOrDefault(b => b.BuddyId == buddyId && b.UserId == _userId);
+                var tripChanges = entity.BuddyTrips.Count + entity.VolunteerTrips.Count;
+                for (int i = 0; i < entity.BuddyTrips.Count; i++)
+                {
+                    var trip = entity.BuddyTrips.ElementAt(0);
+                    ctx.Trips.Remove(trip);
+                }
+                for (int i = 0; i < entity.VolunteerTrips.Count; i++)
+                {
+                    var trip = entity.VolunteerTrips.ElementAt(0);
+                    var ghost = ctx.Buddies.FirstOrDefault(b => b.UserId == Guid.Parse("00000000-0000-0000-0000-000000000000"));
+                    trip.BuddyId = ghost.BuddyId;
+                }
+                
                 ctx.Buddies.Remove(entity);
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == tripChanges + 1;
             }
         }
 

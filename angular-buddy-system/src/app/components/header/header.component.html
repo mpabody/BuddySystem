@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
     <span>Buddy System</span>
     <span class="flex-filler"></span>
+    <button *ngIf="authService.loggedIn" mat-button class="nav-btn" routerLink="/buddies/current-user">Profile</button>
     <button mat-button class="nav-btn" routerLink="/register">Register</button>
     <button *ngIf="!authService.loggedIn" mat-button class="nav-btn" routerLink="/login">Login</button>
     <button *ngIf="authService.loggedIn" mat-button class="nav-btn" (click)="authService.logout()">Log Out</button>
