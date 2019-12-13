@@ -340,6 +340,8 @@ namespace BuddySystem_WebAPI.Controllers
                 return GetErrorResult(result);
             }
 
+            await UserManager.AddToRoleAsync(user.Id, RoleNames.User);
+
             var buddyCreate = new BuddyCreate
             {
                 Name = model.Name,
@@ -379,6 +381,8 @@ namespace BuddySystem_WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            await UserManager.AddToRoleAsync(user.Id, RoleNames.User);
 
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
