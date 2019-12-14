@@ -28,7 +28,7 @@ namespace BuddySystem_WebAPI.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var newAdmin = new ApplicationUser() { UserName = model.Email }; // Email = model.Email
+                var newAdmin = new ApplicationUser() { UserName = model.Email, Email = model.Email }; 
 
                 var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
