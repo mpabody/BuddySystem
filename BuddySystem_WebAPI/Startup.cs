@@ -35,7 +35,7 @@ namespace BuddySystem_WebAPI
 
                 var adminUser = new ApplicationUser()
                 {
-                    UserName = "admin",
+                    UserName = "admin@example.com",
                     Email = "admin@example.com"
                 };
 

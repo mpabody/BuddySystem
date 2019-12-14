@@ -36,13 +36,15 @@ import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-addi
 import { TripRemoveAdditionalBuddyComponent } from './components/trip/trip-remove-additional-buddy/trip-remove-additional-buddy.component';
 import { TripAdditionalBuddiesForTripComponent } from './components/trip/trip-additional-buddies-for-trip/trip-additional-buddies-for-trip.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   
   {
     path: 'buddies', canActivate: [AuthGuard], children: [
-      { path: '', component: BuddyIndexComponent },
+      { path: '', canActivate: [AdminGuard], component: BuddyIndexComponent },
       { path: 'create', component: BuddyCreateComponent },
       { path: 'detail/:id', component: BuddyDetailComponent },
       { path: 'edit/:id', component: BuddyEditComponent },
@@ -108,7 +110,8 @@ const routes = [
     AuthService,
     BuddyService,
     TripService,
-    AuthGuard
+    AuthGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

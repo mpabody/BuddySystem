@@ -81,6 +81,29 @@ namespace BuddySystem_WebAPI.Controllers
                     return Ok($"User added to {newRole} role.");
                 }
             }
+
+        [HttpGet]
+        [Route("GetRole/{userEmail}/")]
+        public IHttpActionResult GetRole(string userEmail)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            using (var context = new ApplicationDbContext())
+            {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+                var user = userManager.FindByEmail(userEmail);
+                bool userIsAdmin = userManager.IsInRole(user.Id, RoleNames.Admin);
+                
+               string currentRole = (userIsAdmin) ? RoleNames.Admin : RoleNames.User;
+                
+                return Ok($"{currentRole}");
+            }
+        }
+
         }
     }
 //}
