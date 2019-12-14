@@ -1,5 +1,5 @@
 
-<h1>Details For This User</h1>
+<h1>Your Buddy Profile</h1>
 <hr />
 
 <div *ngIf="buddy">
@@ -28,6 +28,8 @@
         <span>{{buddy.Age}}</span>
     </div>
     <br/>
+
+    <h2>Trips You've Been a Part Of</h2>
     
     <div>
         <label><b>List of Trips:</b> </label>
@@ -38,7 +40,6 @@
         <div *ngFor="let trip of buddy.VolunteerTrips">Start Location: {{trip.StartLocation}} <br/>End Location {{trip.EndLocation}} <br/>Primary Buddy: {{trip.BuddyName}} <br/><br/></div>
     </div>
 
-    <button mat-raised-button color="accent" routerLink="/buddies/edit/{{buddy.BuddyId}}">Edit</button>
+    <button mat-raised-button color="accent" routerLink="/buddies/edit/{{buddy.BuddyId}}">Edit</button> | 
+    <button mat-raised-button color="primary" routerLink="/trip/TripsForCurrentUser">Home Page</button>
 </div>
-
-<button mat-raised-button color="primary" routerLink="/buddies">Home Page</button>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ControlContainer } from '@angular/forms';
 import { TripService } from 'src/app/services/trip.service';
 import { Router } from '@angular/router';
+import { Buddy } from 'src/app/models/Buddy';
+import { BuddyService } from 'src/app/services/buddy.service';
 
 
 @Component({
@@ -13,17 +15,27 @@ export class TripCreateComponent implements OnInit {
 
 tripForm: FormGroup;
 
-  constructor(private form: FormBuilder, private tripService: TripService, private router: Router) {
+listOfVolunteers: Buddy[];
+buddyId: number;
+
+  constructor(private form: FormBuilder, private tripService: TripService, private router: Router, private buddyService: BuddyService) {
     this.createForm();
+    this.buddyService.getAllVolunteers().subscribe((volunteers: Buddy[]) => {
+      this.listOfVolunteers = volunteers;
+    });
    }
 
   ngOnInit() {
-  }
+    this.buddyService.getCurrentUserBuddy().subscribe((buddy: Buddy) => this.buddyId = buddy.BuddyId
+    )};
 
   createForm() {
     this.tripForm = this.form.group({
       StartTime: new FormControl,
       BuddyId: new FormControl,
+      // BuddyId: this.buddyService.getCurrentUserBuddy().subscribe((buddy: Buddy) => {
+      //   this.buddyId = buddy.BuddyId;
+      // }),
       VolunteerId: new FormControl,
       StartLocation: new FormControl,
       ProjectedEndLocation: new FormControl,
@@ -34,7 +46,7 @@ tripForm: FormGroup;
 
   onSubmit() {
     this.tripService.createTrip(this.tripForm.value).subscribe(() => {
-      this.router.navigate(['/trip']);
+      this.router.navigate(['/trip/TripsForCurrentUser']);
     })
   }
 }
