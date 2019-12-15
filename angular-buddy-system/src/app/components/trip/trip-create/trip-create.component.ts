@@ -13,21 +13,23 @@ import { BuddyService } from 'src/app/services/buddy.service';
 })
 export class TripCreateComponent implements OnInit {
 
-tripForm: FormGroup;
+  tripForm: FormGroup;
 
-listOfVolunteers: Buddy[];
-buddyId: number;
+  listOfVolunteers: Buddy[];
 
   constructor(private form: FormBuilder, private tripService: TripService, private router: Router, private buddyService: BuddyService) {
     this.createForm();
+    this.buddyService.getCurrentUserBuddy().subscribe((buddy: Buddy) => {
+      this.tripForm.setControl("BuddyId", new FormControl(buddy.BuddyId));
+    });
     this.buddyService.getAllVolunteers().subscribe((volunteers: Buddy[]) => {
       this.listOfVolunteers = volunteers;
     });
-   }
+  }
 
   ngOnInit() {
-    this.buddyService.getCurrentUserBuddy().subscribe((buddy: Buddy) => this.buddyId = buddy.BuddyId
-    )};
+
+  };
 
   createForm() {
     this.tripForm = this.form.group({
@@ -41,7 +43,7 @@ buddyId: number;
       ProjectedEndLocation: new FormControl,
       EndLocation: new FormControl,
       EndTime: new FormControl
-    })
+    });
   }
 
   onSubmit() {

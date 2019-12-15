@@ -16,6 +16,7 @@ export class TripAddAdditionalBuddyComponent implements OnInit {
   addAdditionalBuddyForm: FormGroup;
 
 listOfBuddies: Buddy[];
+id: number;
 
   constructor(private form: FormBuilder, private tripService: TripService, private router: Router, private buddyService: BuddyService) {
     this.createForm();
