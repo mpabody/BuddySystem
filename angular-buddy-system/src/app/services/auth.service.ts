@@ -3,8 +3,7 @@ import { RegisterUser } from '../models/RegisterUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '../models/Token';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { Role } from '../models/Role';
+import { Observable} from 'rxjs';
 import { UserInfo } from '../models/UserInfo';
 
 const Api_Url = 'https://localhost:44365'
@@ -14,7 +13,7 @@ const Api_Url = 'https://localhost:44365'
 })
 export class AuthService {
   userInfo: Token;
-  role: Role;
+  role: string;
   loggedIn: boolean;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -39,9 +38,9 @@ export class AuthService {
         email = user.Email;
         
         this.http.get(`${Api_Url}/api/Admin/GetRole/${email}/`, { headers: this.setHeaders() })
-          .subscribe((role: Role) => {
+          .subscribe((role: string) => {
             this.role = role;
-            localStorage.setItem('role', role.role);
+            localStorage.setItem('role', role);
             console.log(role);
           });
       });
@@ -69,6 +68,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('role');
     this.loggedIn = false;
 
     this.http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeaders() });

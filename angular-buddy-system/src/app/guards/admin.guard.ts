@@ -10,8 +10,8 @@ export class AdminGuard implements CanActivate {
     canActivate(): Observable<boolean> {
         return new Observable<boolean>((observer) => {
             var role = localStorage.getItem('role');
-
-            if (role === 'Admin')
+            console.log(role);
+            if (role == 'Admin')
                  {
                 return observer.next(true);
             } else {
