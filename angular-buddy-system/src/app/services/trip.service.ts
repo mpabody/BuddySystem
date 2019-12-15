@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trip } from '../models/Trip';
 import { AdditionalBuddy } from '../models/AdditionalBuddy';
+import { APIURL } from 'src/environments/environment.prod';
 
 
-const Api_Url = 'https://localhost:44365'
+const Api_Url = APIURL
 
 @Injectable({
   providedIn: 'root'
