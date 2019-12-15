@@ -101,8 +101,13 @@
     <Compile Include="Migrations\201911222302557_CaseyFix.Designer.cs">
       <DependentUpon>201911222302557_CaseyFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912132149069_RemovedUserRoleFromApplicationUser.cs" />
+    <Compile Include="Migrations\201912132149069_RemovedUserRoleFromApplicationUser.Designer.cs">
+      <DependentUpon>201912132149069_RemovedUserRoleFromApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleNames.cs" />
     <Compile Include="Trip.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911222302557_CaseyFix.resx">
       <DependentUpon>201911222302557_CaseyFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912132149069_RemovedUserRoleFromApplicationUser.resx">
+      <DependentUpon>201912132149069_RemovedUserRoleFromApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -331,7 +331,7 @@ namespace BuddySystem_WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email,  }; //Email = model.Email
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -339,6 +339,8 @@ namespace BuddySystem_WebAPI.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            await UserManager.AddToRoleAsync(user.Id, RoleNames.User);
 
             var buddyCreate = new BuddyCreate
             {
@@ -372,13 +374,15 @@ namespace BuddySystem_WebAPI.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email }; // Email = model.Email
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+
+            await UserManager.AddToRoleAsync(user.Id, RoleNames.User);
 
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
