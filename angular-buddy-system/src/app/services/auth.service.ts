@@ -3,13 +3,9 @@ import { RegisterUser } from '../models/RegisterUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '../models/Token';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import { Observable, Subject } from 'rxjs';
 import { APIURL } from 'src/environments/environment.prod';
-=======
-import { Observable} from 'rxjs';
 import { UserInfo } from '../models/UserInfo';
->>>>>>> ba6669ad566453350fbf40ec885c4c03ea904876
 
 const Api_Url = APIURL
 
