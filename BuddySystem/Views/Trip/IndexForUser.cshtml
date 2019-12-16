@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BuddySystem.Models.TripListItem>
+
+@{
+    ViewBag.Title = "IndexForUser";
+}
+
+<h2>IndexForUser</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TripId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuddyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuddyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TripId }) |
+            @Html.ActionLink("Add Additional Buddy", "AddAdditionalBuddy", new { id = item.TripId })
+        </td>
+    </tr>
+}
+
+</table>

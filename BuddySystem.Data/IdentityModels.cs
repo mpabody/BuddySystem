@@ -18,6 +18,13 @@ namespace BuddySystem.Data
             // Add custom user claims here
             return userIdentity;
         }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            // Add custom user claims here
+            return userIdentity;
+        }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -32,7 +39,9 @@ namespace BuddySystem.Data
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Walker> Walkers { get; set; }
+        public DbSet<Buddy> Buddies { get; set; }
+        public DbSet<Trip> Trips { get; set; }
+        public DbSet<AdditionalBuddy> AdditionalBuddies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,6 +53,19 @@ namespace BuddySystem.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<Trip>()
+                        .HasRequired(m => m.Buddy)
+                        .WithMany(t => t.BuddyTrips)
+                        .HasForeignKey(m => m.BuddyId)
+                        .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Trip>()
+                        .HasRequired(m => m.Volunteer)
+                        .WithMany(t => t.VolunteerTrips)
+                        .HasForeignKey(m => m.VolunteerId)
+                        .WillCascadeOnDelete(false);
+
         }
     }
 
