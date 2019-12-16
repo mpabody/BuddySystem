@@ -19,8 +19,6 @@ export class TripsForCurrentUserIndexComponent implements OnInit {
   ngOnInit() {
     this.tripService.getTripsForCurrentUser().subscribe((trips: Trip[]) => {
       this.dataSource = new MatTableDataSource<Trip>(trips);
-      console.log(trips)
-
     });
   }
 }

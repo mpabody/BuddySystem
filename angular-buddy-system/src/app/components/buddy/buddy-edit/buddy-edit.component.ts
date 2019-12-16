@@ -47,7 +47,7 @@ export class BuddyEditComponent implements OnInit {
       Age: this.editForm.value.Age
     };
     this.buddyService.updateBuddy(updatedBuddy).subscribe(() => {
-      this.router.navigate(['/buddies']);
+      this.router.navigate(['/buddies/current-user']);
     });
   }
 }

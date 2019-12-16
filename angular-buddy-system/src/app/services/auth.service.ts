@@ -3,8 +3,13 @@ import { RegisterUser } from '../models/RegisterUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '../models/Token';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { Observable, Subject } from 'rxjs';
 import { APIURL } from 'src/environments/environment.prod';
+=======
+import { Observable} from 'rxjs';
+import { UserInfo } from '../models/UserInfo';
+>>>>>>> ba6669ad566453350fbf40ec885c4c03ea904876
 
 const Api_Url = APIURL
 
@@ -13,10 +18,10 @@ const Api_Url = APIURL
 })
 export class AuthService {
   userInfo: Token;
-
+  role: string;
   loggedIn: boolean;
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('id_token')) {
       this.loggedIn = true;
     }
@@ -32,29 +37,50 @@ export class AuthService {
     return this.http.post(`${Api_Url}/token`, authString).subscribe((token: Token) => {
       this.userInfo = token;
       localStorage.setItem('id_token', token.access_token);
+      let email = '';
+
+      this.currentUser().subscribe((user: UserInfo) => {
+        email = user.Email;
+        
+        this.http.get(`${Api_Url}/api/Admin/GetRole/${email}/`, { headers: this.setHeaders() })
+          .subscribe((role: string) => {
+            this.role = role;
+            localStorage.setItem('role', role);
+            console.log(role);
+          });
+      });
       this.loggedIn = true;
       this.router.navigate(['/buddies/current-user']);
       console.log("JSux approves this Login");
     });
   }
 
-    currentUser(): Observable<Object> {
-      if (!localStorage.getItem('id_token')) {
-        return new Observable(observer => observer.next(false));
-        }
+  getRole() {
+    let email: string;
+    this.currentUser().subscribe((user: UserInfo) => {
+      email = user.Email;
+    })
+    return this.http.get(`${Api_Url}/api/Admin/GetRole/${email}/`, { headers: this.setHeaders() })
+  }
 
-      return this.http.get(`$${Api_Url}/api/Account/UserInfo`, { headers: this.setHeaders() });
+  currentUser(): Observable<Object> {
+    if (!localStorage.getItem('id_token')) {
+      return new Observable(observer => observer.next(false));
     }
 
-    logout() {
-      localStorage.removeItem('id_token');
-      this.loggedIn = false;
+    return this.http.get(`${Api_Url}/api/Account/UserInfo`, { headers: this.setHeaders() });
+  }
 
-      this.http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeaders() });
-      this.router.navigate(['/login']);
-    }
+  logout() {
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('role');
+    this.loggedIn = false;
 
-    private setHeaders(): HttpHeaders {
-      return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
-    }
+    this.http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeaders() });
+    this.router.navigate(['/login']);
+  }
+
+  private setHeaders(): HttpHeaders {
+    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+  }
 }

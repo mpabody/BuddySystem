@@ -86,7 +86,10 @@ namespace BuddySystem.Services
                 entity.ProjectedEndLocation = model.ProjectedEndLocation;
                 entity.EndLocation = model.EndLocation;
                 entity.EndTime = model.EndTime;
-
+                if (!ctx.ChangeTracker.HasChanges())
+                {
+                    return true;
+                }
                 return ctx.SaveChanges() == 1;
             }
         }

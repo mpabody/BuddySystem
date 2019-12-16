@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TripService } from 'src/app/services/trip.service';
 import { Trip } from 'src/app/models/Trip';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Buddy } from 'src/app/models/Buddy';
+import { BuddyService } from 'src/app/services/buddy.service';
 
 @Component({
   selector: 'app-trip-edit',
@@ -14,11 +16,19 @@ export class TripEditComponent implements OnInit {
   trip: Trip;
   editForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private tripService: TripService, private activatedRoute: ActivatedRoute, private router: Router) { 
+  endTime: Date;
+
+  listOfVolunteers: Buddy[];
+
+  constructor(private formBuilder: FormBuilder, private tripService: TripService, private activatedRoute: ActivatedRoute, private router: Router, private buddyService: BuddyService) { 
     this.activatedRoute.paramMap.subscribe(params => {
       this.tripService.getTrip(params.get('id')).subscribe((trip: Trip) => {
         this.trip = trip;
         this.createForm();
+        this.endTime = new Date(trip.EndTime);
+      });
+      this.buddyService.getAllVolunteers().subscribe((volunteers: Buddy[]) => {
+        this.listOfVolunteers = volunteers;
       });
     });
   }

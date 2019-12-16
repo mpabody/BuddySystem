@@ -26,6 +26,16 @@ namespace BuddySystem.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            var ghostId = new Guid("00000000-0000-0000-0000-000000000000");
+            context.Buddies.AddOrUpdate(new Buddy
+            {
+                BuddyId = 1,
+                Name = "This buddy has been deleted",
+                CurrentLocation = "The grave",
+                IsMale = true,
+                Age = 108,
+                UserId = ghostId
+            });
         }
     }
 }

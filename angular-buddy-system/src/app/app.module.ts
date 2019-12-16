@@ -9,7 +9,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSelectModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -34,14 +35,16 @@ import { TripDeleteComponent } from './components/trip/trip-delete/trip-delete.c
 import { TripAddAdditionalBuddyComponent } from './components/trip/trip-add-additional-buddy/trip-add-additional-buddy.component';
 import { TripRemoveAdditionalBuddyComponent } from './components/trip/trip-remove-additional-buddy/trip-remove-additional-buddy.component';
 import { TripAdditionalBuddiesForTripComponent } from './components/trip/trip-additional-buddies-for-trip/trip-additional-buddies-for-trip.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   
   {
-    path: 'buddies', children: [
-      { path: '', component: BuddyIndexComponent },
+    path: 'buddies', canActivate: [AuthGuard], children: [
+      { path: '', canActivate: [AdminGuard], component: BuddyIndexComponent },
       { path: 'create', component: BuddyCreateComponent },
       { path: 'detail/:id', component: BuddyDetailComponent },
       { path: 'edit/:id', component: BuddyEditComponent },
@@ -50,7 +53,7 @@ const routes = [
     ]
   },
   {
-    path: 'trip', children: [
+    path: 'trip', canActivate: [AuthGuard], children: [
       { path: '', component: TripIndexComponent },
       { path: 'create', component: TripCreateComponent },
       { path: 'detail/:id', component: TripDetailComponent },
@@ -97,6 +100,7 @@ const routes = [
     MatToolbarModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatSelectModule,
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
@@ -105,8 +109,9 @@ const routes = [
   providers: [
     AuthService,
     BuddyService,
-    TripService
-
+    TripService,
+    AuthGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

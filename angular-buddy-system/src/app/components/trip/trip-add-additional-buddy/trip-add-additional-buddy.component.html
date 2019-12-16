@@ -3,11 +3,20 @@
 
 <form (ngSubmit)="onSubmit()" [formGroup]="addAdditionalBuddyForm">
     <div>
-        <div>
+        <div hidden>
             <mat-form-field>
                 <input matInput placeholder="BuddyId" formControlName="BuddyId" type="BuddyId" required />
             </mat-form-field>
         </div>
+
+        <div class="form-group">
+            <label for="Buddy To Add">Buddy To Add</label>
+            <br />
+            <select class="form-control" id="buddy" required formControlName="BuddyId">
+                <option *ngFor="let buddy of listOfBuddies" [value]="buddy.BuddyId">{{buddy.Name}}</option>
+            </select>
+        </div>
+
         <div>
             <mat-form-field>
                 <input matInput placeholder="TripId" formControlName="TripId" type="TripId" required />
@@ -17,4 +26,4 @@
     </div>
 </form>
 
-<a mat-button routerLink="/trip">Back to List</a>
+<a mat-button routerLink="/trip/TripsForCurrentUser">Back to List</a>
