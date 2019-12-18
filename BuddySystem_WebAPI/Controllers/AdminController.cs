@@ -81,7 +81,7 @@ namespace BuddySystem_WebAPI.Controllers
                     return Ok($"User added to {newRole} role.");
                 }
             }
-
+        [OverrideAuthorization]
         [HttpGet]
         [Route("GetRole/{userEmail}/")]
         public IHttpActionResult GetRole(string userEmail)
